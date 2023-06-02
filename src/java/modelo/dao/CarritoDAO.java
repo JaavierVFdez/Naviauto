@@ -41,11 +41,14 @@ public class CarritoDAO {
     public boolean comprobarProductoCarrito(int id_producto, String dni) {
 
         boolean productoExiste = false;
+        
+        System.out.println(id_producto+ "asdasuhfbaufjgadiasyda");
+        System.out.println(dni + " askjhdbnaljshdbadbkshdb");
 
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("SELECT * from Carrito "
-                    + "where id_producto = " + id_producto + " and dni like '" + dni + "';");
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from carrito "
+                    + "where dni like '" + dni + "' and id_producto = " + id_producto + ";");
 
             ResultSet resultSet = ps.executeQuery();
 
