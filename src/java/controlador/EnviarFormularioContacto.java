@@ -47,7 +47,8 @@ public class EnviarFormularioContacto extends HttpServlet {
 
             //Objeto
             MensajeDAO mensajeDao = new MensajeDAO();
-
+                mensajeDao.cerrarConexion();
+            
             //Almacenamos el mensaje
             if (mensajeDao.addMensaje(nombre, apellido, correo, asunto, mensaje)) {
                 mensajeEnviado = true;

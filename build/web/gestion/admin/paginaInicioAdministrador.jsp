@@ -93,7 +93,7 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Administrar lista completa de las reparaciones de los clientes.</p>
-                                <a href="AdministrarReparaciones" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Reparaciones" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>

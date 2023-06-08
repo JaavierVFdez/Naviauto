@@ -11,13 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.ReparacionDAO;
+import modelo.entidad.Pieza;
+import modelo.entidad.Reparacion;
 
 /**
  *
  * @author javie
  */
-@WebServlet(name = "Servicios", urlPatterns = {"/Servicios"})
-public class Servicios extends HttpServlet {
+@WebServlet(name = "EditarPieza", urlPatterns = {"/EditarPieza"})
+public class EditarPieza extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +35,31 @@ public class Servicios extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Servicios</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Servicios at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            //Objeto
+            ReparacionDAO reparacionDao = new ReparacionDAO();
+            
+            boolean reparacionNoExiste = false;
+            request.setAttribute("reparacionNoExiste", reparacionNoExiste);
+
+            // Almacenamos los datos
+            int codigo_pieza = Integer.parseInt(request.getParameter("codigo_pieza"));
+            int codigo_reparacion = Integer.parseInt(request.getParameter("codigo_reparacion"));
+            String nombre = request.getParameter("nombre");
+            String fabricante = request.getParameter("fabricante");
+            float precio = Float.parseFloat(request.getParameter("precio"));
+            
+            System.out.println(codigo_pieza);
+            System.out.println(codigo_reparacion);
+            System.out.println(nombre);
+            System.out.println(fabricante);
+            System.out.println(precio);
+
+            Pieza pieza = new Pieza(codigo_pieza, codigo_reparacion, nombre, fabricante, precio);
+            
+            request.setAttribute("pieza", pieza);
+            request.getRequestDispatcher("gestion/admin/editarPieza.jsp").forward(request, response);
+            return;
         }
     }
 

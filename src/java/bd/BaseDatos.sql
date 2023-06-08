@@ -28,7 +28,7 @@ CREATE TABLE Vehiculos(
     modelo VARCHAR(20) not null, 
     marca VARCHAR(15) not null,
     anyoVehiculo DATE not null,
-    kilometrajeActual int not null,
+    kilometrajeActual double not null,
     PRIMARY KEY (matricula),
     CONSTRAINT fk_dni FOREIGN KEY (dni) REFERENCES Usuarios(dni)
 );
@@ -65,7 +65,7 @@ CREATE TABLE Factura(
 
 
 CREATE TABLE Reparaciones(
-    codigo_reparacion int not null,
+    codigo_reparacion int not null AUTO_INCREMENT,
     matricula VARCHAR(8) not null,
     descripcion VARCHAR(249),
     fechaEntrada DATE not null,
@@ -78,7 +78,7 @@ CREATE TABLE Reparaciones(
 
 
 CREATE TABLE Piezas(
-    codigo_pieza int,
+    codigo_pieza int AUTO_INCREMENT,
     codigo_reparacion int,
     nombre VARCHAR(25),
     fabricante VARCHAR(25),
@@ -98,7 +98,26 @@ CREATE TABLE Carrito(
     CONSTRAINT fk_id_producto_carrito FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
 );
 
+CREATE TABLE Pedidos(
+    id_pedido int not null AUTO_INCREMENT,
+    dni VARCHAR(9) not null,
+    precio_total float not null,
+    direccion_envio VARCHAR(255) not null,
+    estado VARCHAR(25) not null,
+    PRIMARY KEY (id_pedido),
+    CONSTRAINT fk_dni_pedido FOREIGN KEY (dni) REFERENCES Usuarios(dni)
+);
 
+CREATE TABLE DetallesPedido(
+    id_detalle int not null AUTO_INCREMENT,
+    id_pedido int not null,
+    id_producto int not null,
+    cantidad int not null,
+    precio float not null,
+    PRIMARY KEY (id_detalle),
+    CONSTRAINT fk_id_pedido_detalle FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
+    CONSTRAINT fk_id_producto_detalle FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+);
 
 INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('54187001J', '603865955', 'adminjefe@adminnaviauto.com', 'AdminJefe12345@', 'Javier', 'Vidal', 'jefe', 'Calle Geranio n/7');
 INSERT into Productos (nombre, descripcion, categoria, url, precio, stock) VALUES ('AURA',' Absorbe olor para coche esférico.','ambientador','resources/productos/cristalinasAmbientador4.jpg',4.99,200);

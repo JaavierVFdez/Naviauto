@@ -74,6 +74,7 @@ public class Register extends HttpServlet {
 
                 //Damos de alta al usuario
                 usuarioDao.addUsuario(dni, telefono, correo, password, nombre, apellido, tipoUsuario);
+                usuarioDao.cerrarConexion();
                 response.sendRedirect("login.jsp");
                 return;
 
@@ -90,6 +91,7 @@ public class Register extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Por favor, introduzca otro 'Email' y 'DNI'.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
                 dispatcher.forward(request, response);
 
@@ -98,6 +100,7 @@ public class Register extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Por favor, introduzca otro 'Email' y 'Teléfono'.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
                 dispatcher.forward(request, response);
 
@@ -106,6 +109,7 @@ public class Register extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Por favor, introduzca otro 'DNI' y 'Teléfono'.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
                 dispatcher.forward(request, response);
 
@@ -114,6 +118,7 @@ public class Register extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Por favor, introduzca otro 'DNI'.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
                 dispatcher.forward(request, response);
 
@@ -122,6 +127,7 @@ public class Register extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Por favor, introduzca otro 'Teléfono'.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
                 dispatcher.forward(request, response);
             }

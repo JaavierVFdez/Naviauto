@@ -85,7 +85,7 @@ public class UsuarioDAO {
         return esCorrecto;
     }
 
-    //Comprobar si ya hay un usuario con ese email
+    //Comprobar si ya hay un usuario con ese dni
     public boolean comprobarDNI(String dni) {
         boolean dniExiste = false;
 
@@ -100,8 +100,6 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        System.out.println("dnidndindi:" + dniExiste);
 
         return dniExiste;
     }
@@ -215,8 +213,9 @@ public class UsuarioDAO {
 
             if (rs.next()) {
                 direccion = rs.getString("direccion");
-                
-                if(!direccion.equals("")) {
+
+                // Si la direccion no es null y no está vacía, entonces existe
+                if (direccion != null && !direccion.equals("")) {
                     direccionExiste = true;
                 }
             }
@@ -335,5 +334,13 @@ public class UsuarioDAO {
         }
 
         return direccion;
+    }
+
+    public void cerrarConexion() {
+        try {
+           conexion.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -38,12 +38,24 @@ public class PaginaInicio extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             //Objetos
             ProductoDAO productoDao = new ProductoDAO();
-            List<Producto> categorias = productoDao.obtenerCategorias(); 
+            List<Producto> categorias = productoDao.obtenerCategorias();
 
-            //Redirigimos
-            request.setAttribute("categorias", categorias);
-            request.getRequestDispatcher("paginaInicio.jsp").forward(request, response);
-            return;
+            // Obtenemos el parámetro 'source'
+            String source = request.getParameter("source");
+
+            // Verificamos si el source es 'myId'
+            if ("servicios".equals(source)) {
+                productoDao.cerrarConexion();
+                response.sendRedirect("paginaInicio.jsp#servicios");
+            } else if("quienesSomos".equals(source)) {
+                productoDao.cerrarConexion();
+                response.sendRedirect("paginaInicio.jsp#quienesSomos");
+            } else {
+                productoDao.cerrarConexion();
+                request.setAttribute("categorias", categorias);
+                request.getRequestDispatcher("paginaInicio.jsp").forward(request, response);
+                return;
+            }
         }
     }
 
