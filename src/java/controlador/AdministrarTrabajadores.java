@@ -41,6 +41,7 @@ public class AdministrarTrabajadores extends HttpServlet {
             UsuarioDAO usuarioDao = new UsuarioDAO();
             List<Usuario> empleados = usuarioDao.obtenerEmpleados();
 
+            usuarioDao.cerrarConexion();
             HttpSession sesion = request.getSession();
             sesion.setAttribute("empleados", empleados); 
             

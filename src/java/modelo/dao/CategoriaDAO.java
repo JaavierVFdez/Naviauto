@@ -127,4 +127,12 @@ public class CategoriaDAO {
 
         return categorias;
     }
+    
+    public void cerrarConexion() {
+        try {
+           conexion.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

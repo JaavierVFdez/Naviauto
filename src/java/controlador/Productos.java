@@ -43,7 +43,7 @@ public class Productos extends HttpServlet {
             
             HttpSession sesion = request.getSession();
             sesion.setAttribute("productos", productos); 
-            
+            productoDao.cerrarConexion();
             //Redirigimos
             request.getRequestDispatcher("productos.jsp").forward(request, response);
             return;

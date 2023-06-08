@@ -9,6 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.entidad.Carrito;
+import modelo.entidad.Producto;
 
 /**
  *
@@ -42,10 +46,13 @@ public class CarritoDAO {
 
         boolean productoExiste = false;
 
+        System.out.println(id_producto + "asdasuhfbaufjgadiasyda");
+        System.out.println(dni + " askjhdbnaljshdbadbkshdb");
+
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("SELECT * from Carrito "
-                    + "where id_producto = " + id_producto + " and dni like '" + dni + "';");
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from carrito "
+                    + "where dni like '" + dni + "' and id_producto = " + id_producto + ";");
 
             ResultSet resultSet = ps.executeQuery();
 
@@ -82,11 +89,6 @@ public class CarritoDAO {
     //Funcion para añadir los productos al carrito
     public void addProductoCarrito(String dni_cliente, int id_producto, int cantidad, float precio) {
 
-        System.out.println(dni_cliente);
-        System.out.println(id_producto);
-        System.out.println(cantidad);
-        System.out.println(precio);
-
         try {
             //Consulta
             PreparedStatement ps = conexion.prepareStatement("INSERT into carrito (dni, id_producto, precio, cantidad)"
@@ -104,11 +106,70 @@ public class CarritoDAO {
     public void actualizarStockProductoCarrito(String dni, int id_producto, int cantidad, float precio) {
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("UPDATE carrito set cantidad = "+cantidad+", precio = "+precio+" where dni = '"+dni+"' and id_producto = "+id_producto+";");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE carrito set cantidad = " + cantidad + ", precio = " + precio + " where dni = '" + dni + "' and id_producto = " + id_producto + ";");
 
             int executeUpdate = ps.executeUpdate();
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Funcion para devolver la lista con el carrito del usuario
+    public List<Carrito> getListaCarrito(String dni) {
+        List<Carrito> carritos = new ArrayList();
+
+        ProductoDAO productoDao = new ProductoDAO();
+
+        try {
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from carrito where dni = '" + dni + "';");
+            ResultSet resultSet = ps.executeQuery();
+
+            int id_carrito = 0;
+            int id_producto = 0;
+            String nombreProducto = "";
+            String url_producto = "";
+            float precio = 0;
+            int cantidad = 0;
+
+            while (resultSet.next()) {
+
+                //Almacenamos los datos
+                id_carrito = resultSet.getInt("id_carrito");
+                id_producto = resultSet.getInt("id_producto");
+                nombreProducto = productoDao.obtenerNombreProducto(id_producto);
+                url_producto = productoDao.obtenerUrlProducto(id_producto);
+                precio = resultSet.getFloat("precio");
+                cantidad = resultSet.getInt("cantidad");
+
+                Carrito carrito = new Carrito(id_carrito, dni, id_producto, nombreProducto, url_producto, precio, cantidad);
+                carritos.add(carrito);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return carritos;
+    }
+
+    //Funcion para vaciar la cesta del usuario cuando compre
+    public void vaciarCesta(String dni_cliente) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM Carrito WHERE dni = '"+dni_cliente+"';");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void cerrarConexion() {
+        try {
+           conexion.close();
+        }catch(SQLException e) {
             e.printStackTrace();
         }
     }

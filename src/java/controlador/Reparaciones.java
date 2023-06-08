@@ -6,11 +6,16 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.dao.ReparacionDAO;
+import modelo.dao.UsuarioDAO;
+import modelo.entidad.Reparacion;
 
 /**
  *
@@ -32,16 +37,40 @@ public class Reparaciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Reparaciones</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Reparaciones at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            //Objetos
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+            ReparacionDAO reparacionDao = new ReparacionDAO();
+
+            //Abrimos la sesion
+            HttpSession sesion = request.getSession();
+
+            //Almacenamos la informacion del usuario para determinar el tipo de usuario que es
+            String correo = (String) sesion.getAttribute("correo");
+            String tipoUsuario = usuarioDao.obtenerTipoUsuario(correo);
+            String dni = usuarioDao.obtenerDNI(correo);
+            
+            boolean matriculaExiste = false;
+            if(request.getAttribute("matriculaExiste") != null) {
+                matriculaExiste = (boolean)request.getAttribute("matriculaExiste");
+            }
+
+            //Creamos la lista con las reparaciones globales o del usuario en cuestion
+            if (tipoUsuario.equals("jefe") || tipoUsuario.equals("admin")) {
+                List<Reparacion> reparaciones = reparacionDao.obtenerReparaciones();
+                request.setAttribute("reparaciones", reparaciones);
+                request.setAttribute("matriculaExiste", matriculaExiste);
+                
+                request.getRequestDispatcher("gestion/admin/panelReparaciones.jsp").forward(request, response);
+                return;
+
+            } else {
+                List<Reparacion> reparaciones = reparacionDao.obtenerReparacionesUsuario(dni);
+                request.setAttribute("reparaciones", reparaciones);
+                
+                request.getRequestDispatcher("misReparaciones.jsp").forward(request, response);
+                return;
+            }
         }
     }
 

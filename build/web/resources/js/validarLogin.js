@@ -40,7 +40,7 @@ function validarPassword(e) {
     var pPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,16}/;
     var password = document.getElementById('passwordLogin').value;
     var campo = document.getElementById('passwordLogin');
-    
+
     var errorPasswprd = document.getElementById('errorPassword');
 
     if (!password != null || password.trim() != "") {

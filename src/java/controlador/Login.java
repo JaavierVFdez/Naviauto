@@ -73,6 +73,7 @@ public class Login extends HttpServlet {
                     request.setAttribute("administrador", administrador);
                     sesion.setAttribute("administrador", administrador);
                     sesion.setAttribute("tipoUsuario", "administrador");
+                    usuarioDao.cerrarConexion();
                     response.sendRedirect(("gestion/admin/paginaInicioAdministrador.jsp"));
                     return;
                 }
@@ -81,6 +82,7 @@ public class Login extends HttpServlet {
                     request.setAttribute("registrado", registrado);
                     sesion.setAttribute("registrado", registrado);
                     sesion.setAttribute("tipoUsuario", "registrado");
+                    usuarioDao.cerrarConexion();
                     response.sendRedirect(("index.jsp"));
                     return;
                 }
@@ -89,6 +91,7 @@ public class Login extends HttpServlet {
                 mensajeError = true;
                 request.setAttribute("mensajeError", mensajeError);
                 request.setAttribute("error", "Credenciales Incorrectas.");
+                usuarioDao.cerrarConexion();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
                 dispatcher.forward(request, response);
             }

@@ -43,6 +43,8 @@ a:hover {
     top: 0;
 }
 
+
+
 #title_enroll, #titulo {
     height: 70vh;
 }
@@ -1168,3 +1170,11 @@ table.table .avatar {
 * FIN DISEÑO PANEL ADMINISTRAR TRABAJADORES
 *
 *********************************************/
+
+
+.centrarTexto {
+    align-items: center;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+}

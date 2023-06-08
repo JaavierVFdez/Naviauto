@@ -45,5 +45,13 @@ public class MensajeDAO {
 
         return mensajeAdded;
     }
+    
+    public void cerrarConexion() {
+        try {
+           conexion.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

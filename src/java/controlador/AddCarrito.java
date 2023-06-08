@@ -48,10 +48,6 @@ public class AddCarrito extends HttpServlet {
             //Almacenamos la informacion
             String correoUsuario = "";
             String dni = "";
-            String telefono = "";
-            String nombre = "";
-            String apellido = "";
-            String direccion = "";
 
             boolean productoAdded = false;
             boolean noLog = false;
@@ -64,24 +60,14 @@ public class AddCarrito extends HttpServlet {
                 noLog = true;
                 request.setAttribute("noLog", noLog);
                 request.setAttribute("noLogado", "Tienes que iniciar sesión para comprar.");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Productos");
                 dispatcher.forward(request, response);
             } else {
                 correoUsuario = (String) sesion.getAttribute("correo");
                 dni = usuarioDao.obtenerDNI(correoUsuario);
-                telefono = usuarioDao.obtenerTLF(correoUsuario);
-                nombre = usuarioDao.obtenerNombre(correoUsuario);
-                apellido = usuarioDao.obtenerNombre(correoUsuario);
-                direccion = "";
 
-//                //Comprobamos si el usuario tiene una direccion almacenada
-//                if (usuarioDao.direccionExiste(correoUsuario)) {
-//                    direccion = usuarioDao.obtenerDireccion(correoUsuario);
-//                    request.setAttribute("direccion", direccion);
-//                }
                 //productos
                 int idProducto = Integer.parseInt(request.getParameter("codigoProducto"));
-                System.out.println(idProducto + "aisjkdnaiksjdhaisduhaisu");
                 float precio = Float.parseFloat(request.getParameter("precio"));
                 int cantidad = 1;
 
@@ -95,11 +81,6 @@ public class AddCarrito extends HttpServlet {
                     noActualizar = true;
                 }
 
-                request.setAttribute("dni", dni);
-                request.setAttribute("telefono", telefono);
-                request.setAttribute("nombre", nombre);
-                request.setAttribute("apellido", apellido);
-
                 //Comprobamos si queda stock
                 if (!productoDao.comprobarStock(idProducto, cantidad)) {
 
@@ -108,17 +89,22 @@ public class AddCarrito extends HttpServlet {
                         carritoDao.addProductoCarrito(dni, idProducto, cantidad, precio);
 
                     }
+                    usuarioDao.cerrarConexion();
+                    productoDao.cerrarConexion();
+                    carritoDao.cerrarConexion();
                     productoAdded = true;
                     request.setAttribute("productoAdded", productoAdded);
                     request.setAttribute("mensajeCarrito", "Producto añadido.");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Productos");
                     dispatcher.forward(request, response);
 
                 } else {
-
+                    usuarioDao.cerrarConexion();
+                    productoDao.cerrarConexion();
+                    carritoDao.cerrarConexion();
                     request.setAttribute("productoAdded", productoAdded);
                     request.setAttribute("mensajeCarrito", "No puedes añadir más, sin stock.");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Productos");
                     dispatcher.forward(request, response);
                 }
             }
