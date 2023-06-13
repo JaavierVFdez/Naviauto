@@ -1,4 +1,6 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,25 +14,16 @@
         <!-- Estilo personal -->
         <link rel="stylesheet" href="resources/css/styles.css" />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="../../resources/js/validarEditarTrabajador.js"></script>
-
     </head>
     <body id="bodyAdmin">
+        <!--Javascript-->
+        <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
         <!-- Menú -->
         <nav class="navbar navbar-light bg-light" style="background-color: white;">
             <div id="loginRegister">
                 <div style="margin-top: 0.5rem; margin-right: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="iconoPerfil" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
+                    <a href="CerrarSesion" class="aMenu">Cerrar Sesión</a>
                 </div>
             </div>
             <div class="text-center w-100 mb-4 mt-4" id="logo">
@@ -43,25 +36,28 @@
         </nav>
         <!--Fin menu-->
 
+        <!-- Contenido principal -->
         <div class="container-xl">
             <div class="table-responsive">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2><b>Administrar Empleados</b></h2>
+                                <h2><a class="aMenu" style="color: white; text-decoration: none; margin-right: 1em;" href="PanelAdminJefe"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                                        </svg></a><b>Administrar Trabajadores</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Empleado</span></a>						
+                                <a href="NuevoEmpleado" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Añadir Empleado</span></a>						
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th>DNI</th>
                                 <th>TELEFONO</th>
-                                <th>EMAIL</th>
+                                <th>CORREO</th>
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th>
                                 <th>TIPO USUARIO</th>
@@ -69,156 +65,50 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${empleados}" var="empleado">
-
+                            <c:forEach items="${usuarios}" var="usuario">
                                 <tr>
-                            <form method="post" action="EditarEmpleado">
-                                <input type="hidden" name="dni" value="<c:out value="${empleado.dni}" />"/>
-                                <input type="hidden" name="telefono" value="<c:out value="${empleado.telefono}" />"/>
-                                <input type="hidden" name="email" value="<c:out value="${empleado.email}" />"/>
-                                <input type="hidden" name="nombre" value="<c:out value="${empleado.nombre}" />"/>
-                                <input type="hidden" name="apellido" value="<c:out value="${empleado.apellido}" />"/>
-                                <input type="hidden" name="tipoUsuario" value="<c:out value="${empleado.tipoUsuario}" />"/>
+                                    <td>${usuario.dni}</td>
+                                    <td>${telefono}</td>
+                                    <td>${usuario.email}</td>
+                                    <td>${usuario.nombre}</td>
+                                    <td>${usuario.apellido} </td>
+                                    <td>${usuario.tipoUsuario} </td>
+                                    <td class="d-flex flex-row" style="padding-top: 50%; padding-bottom: 50%;">
+                                        
+                                        <!-- Formulario de edición -->
+                                        <form method="post" action="EditarTrabajador" class="text-center">
+                                            <input type="hidden" name="dni" value="${usuario.dni}"/>
+                                            <input type="hidden" name="telefono" value="${telefono}"/>
+                                            <input type="hidden" name="correo" value="${usuario.email}" />
+                                            <input type="hidden" name="nombre" value="${usuario.nombre}" />
+                                            <input type="hidden" name="apellido" value="${usuario.apellido}" />
+                                            <input type="hidden" name="tipoUsuario" value="${usuario.tipoUsuario}" />
+                                            <button class="button" type="submit" style="background-color: transparent; border:  0px solid black;"><svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
 
-                                <td><c:out value="${empleado.dni}" /></td>
-                                <td><c:out value="${empleado.telefono}"/></td>
-                                <td><c:out value="${empleado.email}" /></td>
-                                <td><c:out value="${empleado.nombre}" /></td>
-                                <td><c:out value="${empleado.apellido}" /></td>
-                                <td><c:out value="${empleado.tipoUsuario}" /></td>
-                                <td>
-                                    <input type="submit" value="Editar" class="edit" style="width: 100%;">
-                                    <input type="submit" value="Eliminar" class="edit" style="width: 100%;">
-                                </td>
-                            </form>
-                            </tr>
-                        </c:forEach>
+                                        <!-- Formulario de eliminación -->
+                                        <form method="post" action="EliminarTrabajador" class="text-center">
+                                            <input type="hidden" name="dni" value="${usuario.dni}"/>
+                                            <input type="hidden" name="telefono" value="${telefono}"/>
+                                            <input type="hidden" name="correo" value="${usuario.email}" />
+                                            <input type="hidden" name="nombre" value="${usuario.nombre}" />
+                                            <input type="hidden" name="apellido" value="${usuario.apellido}" />
+                                            <input type="hidden" name="tipoUsuario" value="${usuario.tipoUsuario}" />
+                                            <button class="button" type="submit" style="background-color: transparent; border:  0px solid black;"><svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
-                    <div>
-                        <h6>
-                            <a class="aMenu" style="color: black; text-decoration: none;" href="PanelJefe">Volver atrás</a>
-                        </h6>
-                    </div>
                 </div>
             </div>        
         </div>
-        <!-- Edit Modal HTML -->
-        <div id="addEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="post" action="addEmpleado">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Añadir Empleado</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>DNI</label>
-                                <input type="text" id="dniTrabajadorA" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="text" class="form-control" id="telefonoTrabajadorA" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" id="emailTrabajadorA" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" id="nombreTrabajadorA" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Apellido</label>
-                                <input type="email" id="apellidoTrabajadorA" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Tipo de Usuario</label>
-                                <select required>
-                                    <option disabled>--Seleccionar--</option>
-                                    <option value="admin" selected>Administrador</option>
-                                    <option value="jefe">Jefe</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-success" value="Añadir">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Edit Modal HTML -->
-        <div id="editEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="post" action="EditarTrabajador">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Editar Empleado</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>DNI <p id="errorDNI"></p></label>
-                                <input type="text" id="dniTrabajadorE" name="dni" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Teléfono <p id="errorTelefono"></p></label>
-                                <input type="text" id="telefonoTrabajadorE" name="telefono" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Email <p id="errorCorreo"></p></label>
-                                <input type="text" id="emailTrabajadorE" name="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Nombre <p id="errorNombre"></p></label>
-                                <input type="text" id="nombreTrabajadorE" name="nombre" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Apellido <p id="errorApellido"></p></label>
-                                <input type="text" id="apellidoTrabajadorE" name="apellido" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Tipo de Usuario</label>
-                                <select>
-                                    <option disabled>--Seleccionar--</option>
-                                    <option value="admin" selected>Administrador</option>
-                                    <option value="jefe">Jefe</option>
-                                </select>
-                            </div>					
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" onclick="validarEditarTrabajador()" id="editarTrabajador" class="btn btn-info" value="Editar">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Eliminar Empleado</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <p>aa</p>
-                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
     </body>
 </html>

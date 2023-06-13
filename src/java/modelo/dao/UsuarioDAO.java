@@ -144,6 +144,48 @@ public class UsuarioDAO {
         return telefonoExiste;
     }
 
+    //Funcion para comprobar si el correo del usuario es el mismo que el que tenia antes
+    public String correoUsuario(String dni) {
+        String correo = "";
+
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from usuarios where dni like '" + dni + "';");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                correo = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(correo + " nkiasdnuaishdaudha");
+
+        return correo;
+    }
+
+    //Funcion para comprobar si el telefono del usuario es el mismo que el que tenia antes
+    public String telefonoUsuario(String dni) {
+        String telefono = "";
+
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from usuarios where dni like '" + dni + "';");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                telefono = rs.getString("telefono");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(telefono + " iasuhdbuayshda");
+
+        return telefono;
+    }
+
     //Función para añadir un nuevo usuario
     public boolean addUsuario(String dni, String telefono, String correo, String password, String nombre, String apellido, String tipoUsuario) {
         boolean usuarioAdded = false;
@@ -162,43 +204,70 @@ public class UsuarioDAO {
 
         return usuarioAdded;
     }
-
-    //Función para obtener los empleados
-    public List<Usuario> obtenerEmpleados() {
-        List<Usuario> empleados = new ArrayList();
-        String dni = "";
-        String telefono = "";
-        String email = "";
-        String nombre = "";
-        String apellido = "";
-        String tipoUsuario = "";
+    
+    
+    //Función para añadir un nuevo usuario
+    public boolean addEmpleado(String dni, String telefono, String correo, String nombre, String apellido, String tipoUsuario, String direccion) {
+        boolean usuarioAdded = false;
 
         try {
-            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM Usuarios;");
-            ResultSet resultSet = ps.executeQuery();
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion)"
+                    + "VALUES('" + dni + "'," + telefono + ",'" + correo + "','Admin12345@','" + nombre + "','" + apellido + "','" + tipoUsuario + "', '"+direccion+"');");
 
-            String categoria = "";
+            int executeUpdate = ps.executeUpdate();
+            usuarioAdded = true;
 
-            while (resultSet.next()) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-                //Almacenamos los datos
-                dni = resultSet.getString("dni");
-                telefono = resultSet.getString("telefono");
-                email = resultSet.getString("email");
-                nombre = resultSet.getString("nombre");
-                apellido = resultSet.getString("apellido");
-                tipoUsuario = resultSet.getString("tipoUsuario");
+        return usuarioAdded;
+    }
 
+    //Función para obtener los empleados
+    public List<Usuario> getUsuarios() {
+        List<Usuario> usuarios = new ArrayList();
+        try {
+
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from usuarios;");
+            ResultSet rs = ps.executeQuery();
+
+            // Iterar sobre los resultados
+            while (rs.next()) {
+
+                // Leer los datos de la fila actual del ResultSet
+                String dni = rs.getString("dni");
+                String correo = rs.getString("email");
+                String telefono = rs.getString("telefono");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String tipoUsuario = rs.getString("tipoUsuario");
+                String direccion = rs.getString("direccion");
+
+                // Añadir el usuario a la lista si cumple con las condiciones
                 if (tipoUsuario.equals("jefe") || tipoUsuario.equals("admin")) {
-                    Usuario empleado = new Usuario(dni, telefono, email, nombre, apellido, tipoUsuario);
-                    empleados.add(empleado);
+                    Usuario usuario = new Usuario(dni, correo, "", nombre, apellido, tipoUsuario, direccion);
+                    usuarios.add(usuario);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return empleados;
+        return usuarios;
+    }
+
+    //Funcion para eliminar al usuario/empleado
+    public void eliminarUsuario(String dni) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE from usuarios where dni like '" + dni + "';");
+            int rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     //Funcion para comprobar si el usuario tiene alguna direccion
@@ -244,6 +313,32 @@ public class UsuarioDAO {
         }
 
         return dni;
+    }
+
+    //Funcion para actualizar los datos el usuario
+    public void actualizarUsuario(String dni, String nombre, String apellido, String telefono, String correo, String direccion) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios set telefono = '" + telefono + "', email = '" + correo + "', nombre = '" + nombre + "', apellido = '" + apellido + "', direccion = '" + direccion + "' where dni = '" + dni + "';");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Funcion para actualizar los datos el usuario
+    public void actualizarEmpleado(String dni, String telefono, String correo, String nombre, String apellido, String tipoUsuario, String direccion) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios set telefono = '" + telefono + "', email = '" + correo + "', nombre = '" + nombre + "', apellido = '" + apellido + "', tipoUsuario = '"+tipoUsuario+"', direccion = '" + direccion + "' where dni = '" + dni + "';");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public String obtenerTLF(String correo) {
@@ -338,8 +433,8 @@ public class UsuarioDAO {
 
     public void cerrarConexion() {
         try {
-           conexion.close();
-        }catch(SQLException e) {
+            conexion.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

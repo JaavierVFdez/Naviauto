@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.UsuarioDAO;
+import modelo.entidad.Usuario;
 
 /**
  *
@@ -32,16 +34,37 @@ public class AddTrabajador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddTrabajador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddTrabajador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+
+            String dni_nuevo = request.getParameter("dni");
+            String telefono_nuevo = request.getParameter("telefono");
+            String correo_nuevo = request.getParameter("correo");
+            String nombre_nuevo = request.getParameter("nombre");
+            String apellido_nuevo = request.getParameter("apellido");
+            String tipoUsuario_nuevo = request.getParameter("tipoUsuario");
+            String direccion_nuevo = request.getParameter("direccion");
+
+            boolean datosValidos = true;
+
+            // Comprobamos si el teléfono está modificado y si es válido
+            if (usuarioDao.comprobarTLF(telefono_nuevo)) {
+                datosValidos = false;
+            }
+
+            // Comprobamos si el correo está modificado y si es válido
+            if (usuarioDao.comprobarEmail(correo_nuevo)) {
+                datosValidos = false;
+            }
+            // Añadimos al usuario si los datos son correctos
+            if (datosValidos) {
+                usuarioDao.addEmpleado(dni_nuevo, telefono_nuevo, correo_nuevo, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo);
+                response.sendRedirect("AdministrarTrabajadores");
+            } else {
+                request.setAttribute("usuario", new Usuario(dni_nuevo, correo_nuevo, "", nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo));
+                request.setAttribute("telefono", telefono_nuevo);
+                request.setAttribute("noeditado", true);
+                request.getRequestDispatcher("gestion/jefe/nuevoEmpleado.jsp").forward(request, response);
+            }
         }
     }
 

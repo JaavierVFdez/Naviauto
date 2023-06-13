@@ -6,22 +6,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Naviauto - Panel Administrador</title>
 
-        <!--Bootstrap-->
+       <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-
 
         <!-- Estilo personal -->
         <link rel="stylesheet" href="resources/css/styles.css" />
     </head>
     <body>
-        <!-- Menú -->
+        <!--Javascript-->
+        <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+         <!-- Menú -->
         <nav class="navbar navbar-light bg-light" style="background-color: white;">
             <div id="loginRegister">
                 <div style="margin-top: 0.5rem; margin-right: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="iconoPerfil" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
+                    <a href="CerrarSesion" class="aMenu">Cerrar Sesión</a>
                 </div>
             </div>
             <div class="text-center w-100 mb-4 mt-4" id="logo">
@@ -56,7 +54,7 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Añadir, editar o eliminar productos.</p>
-                                <a href="AdministrarProductos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Productos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +72,7 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Administrar lista completa de pedidos realizado por los clientes.</p>
-                                <a href="AdministrarPedidos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Pedidos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>
@@ -109,7 +107,7 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Administrar mensajes soporte enviadas por los usuarios.</p>
-                                <a href="AdministrarPedidos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Soporte" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>

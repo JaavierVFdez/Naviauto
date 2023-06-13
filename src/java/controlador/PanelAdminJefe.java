@@ -51,7 +51,7 @@ public class PanelAdminJefe extends HttpServlet {
                 return;
             } else if (tipoUsuario.equals("admin")) {
                 usuarioDao.cerrarConexion();
-                request.getRequestDispatcher("gestion/admin/paginaInicioAdmin.jsp").forward(request, response);
+                request.getRequestDispatcher("gestion/admin/paginaInicioAdministrador.jsp").forward(request, response);
                 return;
             } else {
                 usuarioDao.cerrarConexion();

@@ -39,11 +39,20 @@ public class AdministrarTrabajadores extends HttpServlet {
 
             //Objetos
             UsuarioDAO usuarioDao = new UsuarioDAO();
-            List<Usuario> empleados = usuarioDao.obtenerEmpleados();
+            List<Usuario> usuarios = usuarioDao.getUsuarios();
+            
+            String correo = "";
+            
+            for(Usuario usuario : usuarios) {
+                correo = usuario.getCorreo();
+            }
+            
+            String telefono = usuarioDao.obtenerTLF(correo);
 
             usuarioDao.cerrarConexion();
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("empleados", empleados); 
+            request.setAttribute("telefono", telefono);
+            request.setAttribute("usuarios", usuarios); 
+            
             
             request.getRequestDispatcher("gestion/jefe/administrarTrabajadores.jsp").forward(request, response);
             return;

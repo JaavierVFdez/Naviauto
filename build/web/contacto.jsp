@@ -76,7 +76,7 @@
                     <h2 class="mb-3" style="font-size: 40px; font-weight: bold;">Contáctanos</h2>
 
                     <!--Formulario-->
-                    <form method="post" action="IniciarSesion" id="formularioContactos">
+                    <form method="post" action="EnviarFormularioContacto" id="formularioContactos">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="your-name" class="form-label">Nombre <p id="errorNombre"></p>:</label>

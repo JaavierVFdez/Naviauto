@@ -16,13 +16,13 @@ function validarContacto() {
 }
 
 function validarNombre(e) {
-    var pNombre = /^[a-zA-Z]+[a-zA-Z]+$ /;
+    var pNombre = /^[A-Za-z\s]+$/;
     var nombre = document.getElementById('nombreContacto').value;
     var campo = document.getElementById('nombreContacto');
 
     var errorNombre = document.getElementById('errorNombre');
 
-    if (!nombre.trim() == "") {
+    if (nombre != null || nombre.trim() != "") {
         if (!pNombre.test(nombre)) {
             campo.style.border = "3px solid red";
             errorNombre.innerHTML = "  'Nombre inválido.'";
@@ -30,6 +30,7 @@ function validarNombre(e) {
             return false;
         } else {
             campo.style.border = 'none';
+            errorNombre.innerHTML = "";
         }
     } else {
         campo.style.border = "3px solid red";

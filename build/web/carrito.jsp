@@ -12,6 +12,9 @@
         <jsp:include page="head.jsp" />
     </head>
     <body>
+        <!--Javascript-->
+        <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
         <style>
             input::-webkit-inner-spin-button,
             input::-webkit-outer-spin-button {

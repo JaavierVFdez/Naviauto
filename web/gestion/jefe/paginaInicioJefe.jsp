@@ -16,19 +16,8 @@
         <!-- Menú -->
         <nav class="navbar navbar-light bg-light" style="background-color: white;">
             <div id="loginRegister">
-                <div style="margin-top: 0.5rem; ">
-                    <a class="aMenu"  href="#" style="text-decoration: none; margin-right: 10rem;" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding: 7px;">
-                        <li><a class="dropdown-item aMenu" style="text-decoration: none; font-weight: normal;" href="CerrarSesion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-                                </svg> Cerrar Sesión</a></li>
-                    </ul>
+                <div style="margin-top: 0.5rem; margin-right: 1rem;">
+                    <a href="CerrarSesion" class="aMenu">Cerrar Sesión</a>
                 </div>
             </div>
             <div class="text-center w-100 mb-4 mt-4" id="logo">
@@ -80,7 +69,25 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Añadir, editar o eliminar productos.</p>
-                                <a href="AdministrarProductos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Productos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Fin servicio -->
+
+                    <!-- Inicio servicio -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-service">
+                            <div class="part-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+                                <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                                <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
+                                </svg>
+                                <h3 class="title">Administrar Categorías</h3>
+                            </div>
+                            <div class="part-2">
+                                <p class="description">Añadir, eliminar, editar categorías.</p>
+                                <a href="Categorias" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +105,7 @@
                             </div>
                             <div class="part-2">
                                 <p class="description">Administrar lista completa de pedidos realizado por los clientes.</p>
-                                <a href="AdministrarPedidos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                                <a href="Pedidos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>
@@ -152,6 +159,22 @@
                             <div class="part-2">
                                 <p class="description">Administrar lista completa de los vehículos de los clientes.</p>
                                 <a href="Vehiculos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Fin servicio -->
+                    <!-- Inicio servicio -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-service">
+                            <div class="part-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                                <h3 class="title">Administrar Soporte</h3>
+                            </div>
+                            <div class="part-2">
+                                <p class="description">Administrar mensajes de soporte enviados por el cliente.</p>
+                                <a href="Soporte" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>

@@ -14,14 +14,13 @@
         <link rel="stylesheet" href="resources/css/styles.css" />
     </head>
     <body>
-        <!-- Menú -->
+        <!--Javascript-->
+        <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+         <!-- Menú -->
         <nav class="navbar navbar-light bg-light" style="background-color: white;">
             <div id="loginRegister">
                 <div style="margin-top: 0.5rem; margin-right: 1rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="iconoPerfil" class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
+                    <a href="CerrarSesion" class="aMenu">Cerrar Sesión</a>
                 </div>
             </div>
             <div class="text-center w-100 mb-4 mt-4" id="logo">
@@ -71,7 +70,7 @@
                                     <td><c:out value="${vehiculo.marca}" /></td>
                                     <td><c:out value="${vehiculo.anyoVehiculo}" /></td>
                                     <td><c:out value="${vehiculo.kilometrajeActual}" /> km</td>
-                                    <td>
+                                    <td class="d-flex flex-row" style="padding-top: 50%; padding-bottom: 50%;">
                                         <!-- Formulario de edición -->
                                         <form method="post" action="EditarVehiculo">
                                             <input type="hidden" name="matricula" value="<c:out value="${vehiculo.matricula}"/>" />
@@ -80,7 +79,10 @@
                                             <input type="hidden" name="marca" value="<c:out value="${vehiculo.marca}" />"/>
                                             <input type="hidden" name="anyoVehiculo" value="<c:out value="${vehiculo.anyoVehiculo}" />"/>
                                             <input type="hidden" name="kilometrajeActual" value="<c:out value="${vehiculo.kilometrajeActual}" />"/>
-                                            <input type="submit" class="btn btn-info" value="Editar" class="edit" style="width: 100%;">
+                                            <button type="submit" style="background-color: transparent; border:  0px solid black;"><svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                </svg>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

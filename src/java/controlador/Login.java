@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 
         //Tipos de usuarios
         boolean jefe = false;
-        boolean administrador = false;
+        boolean admin = false;
         boolean registrado = false;
 
         boolean mensajeError = false;
@@ -68,13 +68,13 @@ public class Login extends HttpServlet {
                     response.sendRedirect(("PanelJefe"));
                     return;
                 }
-                if (usuarioDao.tipoUsuario(correo).equals("administrador")) {
-                    administrador = true;
-                    request.setAttribute("administrador", administrador);
-                    sesion.setAttribute("administrador", administrador);
-                    sesion.setAttribute("tipoUsuario", "administrador");
+                if (usuarioDao.tipoUsuario(correo).equals("admin")) {
+                    admin = true;
+                    request.setAttribute("admin", admin);
+                    sesion.setAttribute("admin", admin);
+                    sesion.setAttribute("tipoUsuario", "admin");
                     usuarioDao.cerrarConexion();
-                    response.sendRedirect(("gestion/admin/paginaInicioAdministrador.jsp"));
+                    response.sendRedirect(("PaginaAdmin"));
                     return;
                 }
                 if (usuarioDao.tipoUsuario(correo).equals("usuario")) {

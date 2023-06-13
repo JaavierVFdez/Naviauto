@@ -16,6 +16,8 @@ public class Mensaje {
     public String correo;
     public String asunto;
     public String mensaje;
+    public String respuesta;
+    public String estado;
 
     /**
      * **************************************
@@ -24,13 +26,15 @@ public class Mensaje {
      *
      *
      */
-    public Mensaje(int codigo_mensaje, String nombre, String apellido, String correo, String asunto, String mensaje) {
+    public Mensaje(int codigo_mensaje, String nombre, String apellido, String correo, String asunto, String mensaje, String respuesta, String estado) {
         this.codigo_mensaje = codigo_mensaje;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.asunto = asunto;
         this.mensaje = mensaje;
+        this.respuesta = respuesta;
+        this.estado = estado;
     }
 
     /**
@@ -87,4 +91,22 @@ public class Mensaje {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 }

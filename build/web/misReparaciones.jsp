@@ -122,7 +122,7 @@
                                                     <input type="hidden" name="fechaFinalizacion" value="${reparacion.fechaFinalizacion}"/>
                                                     <input type="hidden" name="estado" value="${reparacion.estado}"/>
                                                     <input type="hidden" name="precio" value="${reparacion.precio}"/>
-                                                    <input type="submit" class="btn btn-info" value="Ver detalles" style="width: 100%;">
+                                                    <input type="submit" class="btn btn-danger" value="Ver detalles" style="width: 100%;">
                                                 </form>
                                             </td>
                                         </tr>

@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/paginaInicio.jsp</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/src/java/controlador/Reparaciones.java</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/misReparaciones.jsp</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/gestion/admin/panelReparaciones.jsp</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/gestion/admin/administrarReparaciones.jsp</file>
-            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/carrito.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/src/java/controlador/AdministrarTrabajadores.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/gestion/jefe/administrarTrabajadores.jsp</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/src/java/controlador/EditarTrabajador.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/src/java/controlador/TrabajadorEditado.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/src/java/controlador/ProductoEditado.java</file>
+            <file>file:/C:/Users/javie/Documents/NetBeansProjects/WebApplication2/WebApplication2/web/gestion/jefe/editarTrabajador.jsp</file>
         </group>
     </open-files>
 </project-private>

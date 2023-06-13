@@ -6,11 +6,15 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.dao.UsuarioDAO;
+import modelo.entidad.Usuario;
 
 /**
  *
@@ -32,16 +36,58 @@ public class EditarPerfil extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditarPerfil</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditarPerfil at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            //Objetos
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+
+            boolean telefonoNoExiste;
+
+            Object correoNoExisteObj = request.getAttribute("correoNoExiste");
+
+            if (correoNoExisteObj instanceof Boolean) {
+                boolean correoNoExiste = (Boolean) correoNoExisteObj;
+                request.setAttribute("correoNoExiste", correoNoExiste);
+            }
+
+            //Abrimos la seseion
+            HttpSession sesion = request.getSession();
+
+            String correo = (String) sesion.getAttribute("correo");
+            String dni = "";
+            String nombre = "";
+            String apellido = "";
+            String telefono = "";
+            String direccion = "";
+
+            boolean usuarioLogado = false;
+
+            if (sesion.getAttribute("correo") != null || !sesion.getAttribute("correo").equals("")) {
+                correo = (String) sesion.getAttribute("correo");
+                dni = usuarioDao.obtenerDNI(correo);
+                nombre = usuarioDao.obtenerNombre(correo);
+                apellido = usuarioDao.obtenerApellido(correo);
+                telefono = usuarioDao.obtenerTLF(correo);
+                direccion = usuarioDao.obtenerDireccion(correo);
+                usuarioLogado = true;
+            }
+
+            System.out.println(correo);
+            System.out.println(nombre);
+            System.out.println(apellido);
+            System.out.println(direccion);
+
+            Usuario usuario = new Usuario(dni, correo, "", nombre, apellido, "", direccion);
+            request.setAttribute("usuario", usuario);
+            request.setAttribute("telefono", telefono);
+
+            if (usuarioLogado) {
+                request.getRequestDispatcher("editarInformacionUsuario.jsp").forward(request, response);
+                return;
+            } else {
+                request.getRequestDispatcher("PaginaInicio").forward(request, response);
+                return;
+            }
+
         }
     }
 

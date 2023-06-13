@@ -16,6 +16,8 @@
         <jsp:include page="../../head.jsp" />
     </head>
     <body>
+        <!--Javascript-->
+        <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
 
     <c:choose>
         <c:when test = "${reparacionNoExiste}">
@@ -40,25 +42,22 @@
     </c:choose>
 
 
-    <!-- Menú -->
-    <nav class="navbar navbar-light bg-light" style="background-color: white;">
-        <div id="loginRegister">
-            <div style="margin-top: 0.5rem; margin-right: 1rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="iconoPerfil" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                </svg>
-            </div>
-        </div>
-        <div class="text-center w-100 mb-4 mt-4" id="logo">
-            <div id="logologinDiv">
-                <div id="logoDiv">
-                    <img class="center" src="resources/img/logo.png" alt="" width="200" height="65">
+     <!-- Menú -->
+        <nav class="navbar navbar-light bg-light" style="background-color: white;">
+            <div id="loginRegister">
+                <div style="margin-top: 0.5rem; margin-right: 1rem;">
+                    <a href="CerrarSesion" class="aMenu">Cerrar Sesión</a>
                 </div>
             </div>
-        </div>
-    </nav>
-    <!--Fin menu-->
+            <div class="text-center w-100 mb-4 mt-4" id="logo">
+                <div id="logologinDiv">
+                    <div id="logoDiv">
+                        <img class="center" src="resources/img/logo.png" alt="" width="200" height="65">
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!--Fin menu-->
 
     <!-- Contenido principal -->
     <div class="container bg-light rounded mt-5 mb-5 w-75 text-center">

@@ -36,8 +36,6 @@ public class EliminarReparacion extends HttpServlet {
 
             // Almacenamos los datos
             int codigo_reparacion = Integer.parseInt(request.getParameter("codigo_reparacion"));
-
-            System.out.println(codigo_reparacion);
             
             //Objeto
             ReparacionDAO reparacionDao = new ReparacionDAO();

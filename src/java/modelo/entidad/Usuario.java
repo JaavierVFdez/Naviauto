@@ -15,6 +15,7 @@ public class Usuario extends Conexion {
     public String dni;
     public String telefono;
     public String email;
+    public String correo;
     public String password;
     public String nombre;
     public String apellido;
@@ -54,6 +55,10 @@ public class Usuario extends Conexion {
         this.apellido = apellido;
         this.tipoUsuario = tipoUsuario;
     }
+    
+    
+    
+    
 
     /**
      * ****************************************
@@ -106,6 +111,15 @@ public class Usuario extends Conexion {
         return apellido;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -126,4 +140,5 @@ public class Usuario extends Conexion {
         this.direccion = direccion;
     }
 
+    
 }

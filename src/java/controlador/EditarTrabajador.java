@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.UsuarioDAO;
+import modelo.entidad.Usuario;
 
 /**
  *
@@ -32,16 +34,24 @@ public class EditarTrabajador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditarTrabajador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditarTrabajador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+            
+            //Almacenamos
+            String dni = request.getParameter("dni");
+            String correo = request.getParameter("correo");
+            String telefono = usuarioDao.obtenerTLF(correo);
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String direccion = request.getParameter("direccion");
+            String tipoUsuario = request.getParameter("tipoUsuario");
+
+            Usuario usuario = new Usuario(dni, correo, "", nombre, apellido, tipoUsuario, direccion);
+            request.setAttribute("usuario", usuario);
+            request.setAttribute("telefono", telefono);
+            
+            request.getRequestDispatcher("gestion/jefe/editarTrabajador.jsp").forward(request, response);
+            return;
         }
     }
 

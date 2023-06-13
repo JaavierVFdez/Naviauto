@@ -60,15 +60,13 @@ public class CategoriaDAO {
     }
 
     //Función para añadir una categoria
-    public void addCategoria(String nombre, String nombreAntiguo) {
+    public void addCategoria(String nombre) {
         try {
             //Consulta
             PreparedStatement ps = conexion.prepareStatement("INSERT into Categorias (nombre_categoria)"
                     + "VALUES('" + nombre + "');");
 
-            if (nombreAntiguo.equals(nombre) || !categoriaExiste(nombreAntiguo)) {
-                int executeUpdate = ps.executeUpdate();
-            }
+            int executeUpdate = ps.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,7 +77,7 @@ public class CategoriaDAO {
     public void eliminarCategoria(String nombre) {
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("DELETE from Categorias where nombre_categoria = " + nombre + ";");
+            PreparedStatement ps = conexion.prepareStatement("DELETE from Categorias where nombre_categoria = '" + nombre + "';");
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -127,11 +125,11 @@ public class CategoriaDAO {
 
         return categorias;
     }
-    
+
     public void cerrarConexion() {
         try {
-           conexion.close();
-        }catch(SQLException e) {
+            conexion.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

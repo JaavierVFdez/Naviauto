@@ -285,41 +285,41 @@
         </div>
         <!--/Fin ofertas-->
 
-        <!-- Sección Categorias -->
-        <section class="section-services" id="servicios">
-            <div class="container text-center">
-                <div class="row justify-content-center text-center">
-                    <div class="col-md-10 col-lg-8">
-                        <div class="header-section">
-                            <h2 class="title">Nuestros <span>Productos</span></h2>
+        <!-- Quienes Somos -->
+
+        <section id="quienesSomos" class="about-section mb-5">
+            <div class="container">
+                <div class="row">                
+                    <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                        <div class="inner-column">
+                            <div class="sec-title">
+                                <span class="title" style="color: #cc0000;"><strong>Sobre Nosotros</strong></span>
+                                <h2 style="color: white;">Más de 20 años de trayectoria</h2>
+                            </div>
+                            <div class="text">Desde hace más de dos décadas, el taller <span style="color: #cc0000;"><strong>Naviauto</strong></span> ha sido un faro de excelencia y dedicación en la comunidad. Inaugurado en el albor de los años 2000, este taller ha demostrado un compromiso inquebrantable con la <span style="color:white;"><strong>calidad y la atención personalizada.</strong></span></div>
+                            <div class="text">
+                                Los clientes, tanto <span style="color:white;"><strong>habituales como nuevos</strong></span>, han encontrado un lugar de confianza donde los detalles y la meticulosidad son la norma. <span style="color:white;"><br/><strong>La solidez y la experiencia</strong></span> que ha acumulado a lo largo de estos años lo convierten en un referente indiscutido, siendo fuente de inspiración y modelo a seguir para las generaciones futuras de artesanos y emprendedores.
+                            </div>
+                            <div class="btn-box">
+                                <a href="Contacto" class="theme-btn btn-danger">Contáctanos</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); padding: 3%;">
-                        <c:forEach items="${categorias}" var="categoria" end="2">
-                            <form method="post" action="VisitarCategoria" style="text-align: center;">
-                                <div class="single-service card text-black divCategorias">
-                                    <input type="hidden" name='categoria' value="<c:out value='${categoria.categoria}'/>"/>
-                                    <input type="submit" style="border: none; text-decoration: none;" class="aService btn-link" href="VisitarCategoria" value="<c:out value='${categoria.categoria}'/>"/>
-                                </div>
-                            </form>
-                        </c:forEach>
-                        <div class="single-service card text-black divCategorias">
-                            <a href="Productos" class="aService">ver todos</a>
+
+                    <!-- Image Column -->
+                    <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                        <div class="inner-column wow fadeInLeft">
+                            <figure class="image-1"><a href="PaginaInicio" class="lightbox-image" data-fancybox="images"><img class="imgQuienesSomos" title="Rahul Kumar Yadav" src="resources/img/slider5.jpg " alt=""></a></figure><br/>
+                            <figure class="image-1"><a href="PaginaInicio" class="lightbox-image" data-fancybox="images"><img class="imgQuienesSomos" title="Rahul Kumar Yadav" src="resources/img/slider4.jpg " alt=""></a></figure>
+
                         </div>
-                    </div>
+                    </div>  
                 </div>
-            </div>
         </section>
-        <!-- /Final Sección Categorias -->
 
-        
-        <!-- Reseña -->
+        <!-- Fin Quienes somos -->
 
-        <!-- Fin reseña -->
 
-        
         <!-- Banner -->
         <div style="background-color: #cc0000; opacity: 0.8; height: 30%; margin-bottom: 0px;" class="text-center w-100">
             <h3 style="padding: 5%; color: #fff; font-weight: bold;">

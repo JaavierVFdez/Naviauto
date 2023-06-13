@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.UsuarioDAO;
 
 /**
  *
@@ -32,16 +33,14 @@ public class EliminarEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EliminarEmpleado</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EliminarEmpleado at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+            
+            String dni = request.getParameter("dni");
+            usuarioDao.eliminarUsuario(dni);
+            
+            response.sendRedirect("AdministrarTrabajadores");
+            return;
         }
     }
 

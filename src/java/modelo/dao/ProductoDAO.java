@@ -69,38 +69,25 @@ public class ProductoDAO {
         return productos;
     }
 
-    //Función para obtener una lista de las categoras existentes
-    public List<Producto> obtenerCategorias() {
-        List<Producto> categorias = new ArrayList();
-
-        try {
-            PreparedStatement ps = conexion.prepareStatement("SELECT DISTINCT categoria FROM Productos;");
-            ResultSet resultSet = ps.executeQuery();
-
-            String categoria = "";
-
-            while (resultSet.next()) {
-
-                //Almacenamos los datos
-                categoria = resultSet.getString("categoria");
-
-                Producto producto = new Producto(categoria);
-                categorias.add(producto);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return categorias;
-    }
-
     //Funcion para añadir un producto
     public void addProducto(String nombre, String descripcion, String categoria, String url, double precio, int stock) {
         try {
             //Consulta
             PreparedStatement ps = conexion.prepareStatement("INSERT into Productos (nombre, descripcion, categoria, url, precio, stock)"
                     + "VALUES('" + nombre + "', '" + descripcion + "', '" + categoria + "', '" + url + "', " + precio + ", " + stock + ");");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Funcion para actualizar un producto
+    public void actualizarProducto(int id_producto, String nombre, String descripcion, String categoria, String url, float precio, int stock) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("UPDATE productos set nombre = '" + nombre + "', descripcion = '" + descripcion + "', categoria = '" + categoria + "', stock = " + stock + ", url = '"+url+"', precio = " + precio + " WHERE id_producto = " + id_producto + ";");
 
             int executeUpdate = ps.executeUpdate();
 
@@ -168,10 +155,10 @@ public class ProductoDAO {
 
     //Funcion para actualizar el stock de los productos comprados
     public void actualizarStock(int id_producto, int cantidad) {
-        
+
         System.out.println(id_producto);
         System.out.println(cantidad);
-        
+
         try {
             //Consulta
             PreparedStatement ps = conexion.prepareStatement("UPDATE productos set stock =  stock - " + cantidad + " where id_producto = " + id_producto + ";");
@@ -182,11 +169,41 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
-    
+
+    //Funcion para comprobar si la categoria existe
+    public boolean existeCategoria(String nombre_categoria) {
+        boolean categoriaExiste = false;
+        
+        try {
+            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM Productos where categoria = '" + nombre_categoria + "' ;");
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                categoriaExiste = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return categoriaExiste;
+    }
+
+    //Funcion para eliminar un producto
+    public void eliminarProducto(int id_producto) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE from productos where id_producto like " + id_producto + ";");
+            int rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void cerrarConexion() {
         try {
-           conexion.close();
-        }catch(SQLException e) {
+            conexion.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

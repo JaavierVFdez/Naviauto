@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.dao.CategoriaDAO;
 import modelo.dao.ProductoDAO;
+import modelo.dao.UsuarioDAO;
+import modelo.entidad.Categoria;
 import modelo.entidad.Producto;
 
 /**
@@ -38,15 +41,37 @@ public class Productos extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             //Objetos
+            UsuarioDAO usuarioDao = new UsuarioDAO();
             ProductoDAO productoDao = new ProductoDAO();
-            List<Producto> productos = productoDao.getListaProducto();
+            CategoriaDAO categoriaDao = new CategoriaDAO();
             
+            List<Producto> productos = productoDao.getListaProducto();
+            List<Categoria> categorias = categoriaDao.mostrarCategorias();
+            
+
+            //Abrimos la sesion
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("productos", productos); 
+
+            String correo = (String) sesion.getAttribute("correo");
+            String tipoUsuario = usuarioDao.obtenerTipoUsuario(correo);
+            String dni = usuarioDao.obtenerDNI(correo);
+            
+
+            request.setAttribute("correo", correo);
+            request.setAttribute("productos", productos);
+            request.setAttribute("categorias", categorias);
             productoDao.cerrarConexion();
-            //Redirigimos
-            request.getRequestDispatcher("productos.jsp").forward(request, response);
-            return;
+
+            //Creamos la lista con las reparaciones globales o del usuario en cuestion
+            if (tipoUsuario.equals("jefe") || tipoUsuario.equals("admin")) {
+                request.getRequestDispatcher("gestion/admin/panelProductos.jsp").forward(request, response);
+                return;
+
+            } else {
+                //Redirigimos
+                request.getRequestDispatcher("productos.jsp").forward(request, response);
+                return;
+            }
         }
     }
 
