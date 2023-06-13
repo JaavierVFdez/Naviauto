@@ -26,15 +26,14 @@ CREATE TABLE Mensajes(
 
 CREATE TABLE Vehiculos(
     matricula VARCHAR(8) not null,
-    dni VARCHAR(15) not null,
+    dni VARCHAR(15) not null,   
     modelo VARCHAR(20) not null, 
     marca VARCHAR(15) not null,
     anyoVehiculo DATE not null,
     kilometrajeActual double not null,
     PRIMARY KEY (matricula),
     CONSTRAINT fk_dni FOREIGN KEY (dni) REFERENCES Usuarios(dni)
-);
-
+);  
 
 CREATE TABLE Productos(
     id_producto int not null AUTO_INCREMENT,
@@ -46,25 +45,6 @@ CREATE TABLE Productos(
     stock int not null,
     PRIMARY KEY (id_producto)
 );
-
-CREATE TABLE Servicio(
-    id_servicio int not null AUTO_INCREMENT,
-    nombre VARCHAR(25) not null,
-    descripcion VARCHAR(254) not null,
-    PRIMARY KEY (id_servicio)
-);
-
-
-CREATE TABLE Factura(
-    codigo_factura int not null,
-    dni VARCHAR(9) not null,
-    descripcion VARCHAR (254) not null,
-    fecha DATE not null,
-    precio float not null,
-    PRIMARY KEY (codigo_factura),
-    CONSTRAINT fk_dni_cliente FOREIGN KEY (dni) REFERENCES Usuarios(dni)
-);
-
 
 CREATE TABLE Reparaciones(
     codigo_reparacion int not null AUTO_INCREMENT,
@@ -129,7 +109,10 @@ CREATE TABLE Categorias(
 INSERT into Categorias(nombre_categoria) VALUES('Ambientador');
 INSERT into Categorias(nombre_categoria) VALUES('Limpieza');
 INSERT into Categorias(nombre_categoria) VALUES('Gadget ');
-INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('54187001J', '603865955', 'adminjefe@adminnaviauto.com', 'AdminJefe12345@', 'Javier', 'Vidal', 'jefe', 'Calle Geranio n/7');
+INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('54187001J', '603865955', 'adminjefe@adminnaviauto.com', 'AdminJefe12345@', 'Javier', 'Vidal', 'jefe', '');
+INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('58190232B', '602565954', 'joseMolinaJefe@adminnaviauto.com', 'JoseMo1@', 'Jose', 'Molina', 'jefe', '');
+INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('52310423K', '623891232', 'mariaAdmin@adminnaviauto.com', 'MarRar12345@', 'Maria', 'Ramirez', 'admin', '');
+INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion) VALUES ('55892832P', '666273845', 'evaDomAdmin@adminnaviauto.com', 'EvaDomAd1345@', 'Eva', 'Dominguez', 'admin', '');
 INSERT into Productos (nombre, descripcion, categoria, url, precio, stock) VALUES ('AURA',' Absorbe olor para coche esférico.','Ambientador','resources/productos/cristalinasAmbientador4.jpg',4.99,200);
 INSERT into Productos (nombre, descripcion, categoria, url, precio, stock) VALUES ('AREON - Platinum','Perfume elegante.','Ambientador','resources/productos/areonAmbientador.jpg',16.99,50);
 INSERT into Productos (nombre, descripcion, categoria, url, precio, stock) VALUES ('CRISTALINAS - Pack 2','Aroma a Mora, fresco y limpio.','Ambientador','resources/productos/cristalinasAmbientador.jpg',9.99,100);
