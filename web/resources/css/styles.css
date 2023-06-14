@@ -1137,6 +1137,12 @@ form input {
     border-bottom: 3px solid black;
 }
 
+#correoRegister:focus, #apellidoRegister:focus, #telefonoRegister:focus, #dniRegister:focus, #passwordRegister:focus, #nombreRegister:focus {
+    outline: 0;
+    border: 0px solid;
+    border-bottom: 3px solid black;
+}
+
 #regsiterForm {
     text-align: left;
 }
@@ -1503,4 +1509,8 @@ table.table .avatar {
     display: flex;
     height: 100px;
     justify-content: center;
+}
+
+input[type=text]:focus{
+    outline:0;
 }

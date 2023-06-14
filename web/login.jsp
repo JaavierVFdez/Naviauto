@@ -120,9 +120,9 @@
             <div class="campos">
                 <h3>Accede a tu cuenta</h3>
                 <form method="post" action="Login">
-                    <input type="email" name="correo" id="correoLogin" placeholder="Correo electrónico" size="65" maxlength="45" autocomplete="off"/><br/>
+                    <input type="email" name="correo" id="correoLogin" placeholder="Correo electrónico" size="65" maxlength="45" autocomplete="off" style="outline:0;"/><br/>
                     <p style="display: inline-block" id="errorCorreo"></p><br/>
-                    <input type="password" name="password" id="passwordLogin" placeholder="Contraseña" size="65" maxlength="20" minlength="8"/><br/>
+                    <input type="password" name="password" id="passwordLogin" placeholder="Contraseña" size="65" maxlength="20" minlength="8" style="outline:0;"/><br/>
                     <p style="display: inline-block" id="errorPassword"></p><br/> <br/>
                     <p>¿No tienes cuenta?, <a href="NuevaCuenta">registrate aquí</a>.</p>
                     <input type="submit" onclick="validarLogin()" value="Acceder" id="iniciarSesion" class="btn btn-danger"/>

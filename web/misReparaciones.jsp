@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Naviauto - Mis Reparaciones</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">

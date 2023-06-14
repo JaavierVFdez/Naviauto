@@ -5,6 +5,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Naviauto - Página Inicio</title>
 
         <!--Bootstrap-->
@@ -80,13 +81,13 @@
         <!-- Slider -->
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" style="background-image: url('resources/img/slider5.jpg'); background-repeat: no-repeat; height: 35rem; width: 100%;">
+                <div class="carousel-item active" style="background-image: url('resources/img/slider5.jpg'); background-repeat: no-repeat; height: 35rem; width: 100%; background-size: cover;">
 
                 </div>
-                <div class="carousel-item" style="background-image: url('resources/img/slider3.jpg'); background-repeat: no-repeat; height: 35rem;">
+                <div class="carousel-item" style="background-image: url('resources/img/slider3.jpg'); background-repeat: no-repeat; height: 35rem; background-size: cover;">
 
                 </div>
-                <div class="carousel-item" style="background-image: url('resources/img/slider4.jpg'); background-repeat: no-repeat; height: 35rem;">
+                <div class="carousel-item" style="background-image: url('resources/img/slider4.jpg'); background-repeat: no-repeat; height: 35rem; background-size: cover;">
 
                 </div>
             </div>
@@ -307,11 +308,10 @@
                     </div>
 
                     <!-- Image Column -->
-                    <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="inner-column wow fadeInLeft">
+                    <div class="image-column col-lg-6 col-md-12 col-sm-12" style="border: 0px;">
+                        <div style="border: 0px;">
                             <figure class="image-1"><a href="PaginaInicio" class="lightbox-image" data-fancybox="images"><img class="imgQuienesSomos" title="Rahul Kumar Yadav" src="resources/img/slider5.jpg " alt=""></a></figure><br/>
                             <figure class="image-1"><a href="PaginaInicio" class="lightbox-image" data-fancybox="images"><img class="imgQuienesSomos" title="Rahul Kumar Yadav" src="resources/img/slider4.jpg " alt=""></a></figure>
-
                         </div>
                     </div>  
                 </div>

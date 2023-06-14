@@ -8,6 +8,7 @@
 
         <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Estilo personal -->
         <link rel="stylesheet" href="resources/css/styles.css" />
