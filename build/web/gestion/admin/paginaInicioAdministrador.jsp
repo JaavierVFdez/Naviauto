@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Naviauto - Panel Administrador</title>
 
-       <!--Bootstrap-->
+        <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 
         <!-- Estilo personal -->
@@ -15,7 +15,7 @@
     <body>
         <!--Javascript-->
         <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-         <!-- Menú -->
+        <!-- Menú -->
         <nav class="navbar navbar-light bg-light" style="background-color: white;">
             <div id="loginRegister">
                 <div style="margin-top: 0.5rem; margin-right: 1rem;">
@@ -38,7 +38,7 @@
                 <div class="row justify-content-center text-center">
                     <div class="col-md-10 col-lg-8">
                         <div class="header-section">
-                            <h2 class="title">Panel <span>Administrador</span></h2>
+                            <h2 class="title">Panel <span>Admin</span></h2>
                         </div>
                     </div>
                 </div>
@@ -55,6 +55,24 @@
                             <div class="part-2">
                                 <p class="description">Añadir, editar o eliminar productos.</p>
                                 <a href="Productos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Fin servicio -->
+
+                    <!-- Inicio servicio -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-service">
+                            <div class="part-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+                                <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                                <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
+                                </svg>
+                                <h3 class="title">Administrar Categorías</h3>
+                            </div>
+                            <div class="part-2">
+                                <p class="description">Añadir, eliminar, editar categorías.</p>
+                                <a href="Categorias" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>
                     </div>
@@ -96,17 +114,51 @@
                         </div>
                     </div>
                     <!-- / Fin servicio -->
+
                     <!-- Inicio servicio -->
                     <div class="col-md-6 col-lg-3">
                         <div class="single-service">
                             <div class="part-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
-                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+                                <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z"/>
                                 </svg>
-                                <h3 class="title">Administrar Mensajes Soporte</h3>
+                                <h3 class="title">Administrar Piezas</h3>
                             </div>
                             <div class="part-2">
-                                <p class="description">Administrar mensajes soporte enviadas por los usuarios.</p>
+                                <p class="description">Administrar lista completa de las piezas.</p>
+                                <a href="Piezas" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Fin servicio -->
+
+                    <!-- Inicio servicio -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-service">
+                            <div class="part-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
+                                <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                                </svg>
+                                <h3 class="title">Administrar Vehículos</h3>
+                            </div>
+                            <div class="part-2">
+                                <p class="description">Administrar lista completa de los vehículos de los clientes.</p>
+                                <a href="Vehiculos" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Fin servicio -->
+                    <!-- Inicio servicio -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-service">
+                            <div class="part-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                                <h3 class="title">Administrar Soporte</h3>
+                            </div>
+                            <div class="part-2">
+                                <p class="description">Administrar mensajes de soporte enviados por el cliente.</p>
                                 <a href="Soporte" class="aService"><i class="fas fa-arrow-circle-right"></i>Acceder</a>
                             </div>
                         </div>

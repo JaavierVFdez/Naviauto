@@ -117,54 +117,64 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body p-4">
-                                <form method="post" action="HacerPedido">
-                                    <div class="row">
 
-                                        <div class="col-lg-6">
-                                            <h5 class="mb-3">
-                                                <strong>Productos</strong>
-                                            </h5>
-                                            <hr>
+                                <div class="row">
 
-                                            <c:choose>
-                                                <c:when test="${fn:length(carritos) > 0}">
-                                                    <c:forEach items="${carritos}" var="carrito">
-                                                        <div class="card mb-3">
-                                                            <div class="card-body">
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex flex-row align-items-center">
-                                                                        <div style="margin-right: 1em;">
-                                                                            <img
-                                                                                src="<c:out value="${carrito.url_producto}"/>"
-                                                                                class="img-fluid rounded-3" alt="Shopping item" style="width: 105px; height: 85px;">
-                                                                        </div>
-                                                                        <div class="ms-3">
-                                                                            <h5><c:out value="${carrito.nombre_producto}"/></h5>
-                                                                        </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="mb-3">
+                                            <strong>Productos</strong>
+                                        </h5>
+                                        <hr>
+
+                                        <c:choose>
+                                            <c:when test="${fn:length(carritos) > 0}">
+                                                <c:forEach items="${carritos}" var="carrito">
+                                                    <div class="card mb-3">
+                                                        <div class="card-body">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="d-flex flex-row align-items-center">
+                                                                    <div style="margin-right: 1em;">
+                                                                        <img
+                                                                            src="<c:out value="${carrito.url_producto}"/>"
+                                                                            class="img-fluid rounded-3" alt="Shopping item" style="width: 105px; height: 85px;">
                                                                     </div>
-                                                                    <div class="d-flex flex-row align-items-center">
-                                                                        <div style="width: 50px;">
-                                                                            <h5 class="fw-normal mb-0"><c:out value="${carrito.cantidad}"/></h5>
-                                                                        </div>
-                                                                        <div style="width: 80px;">
-                                                                            <h5 class="mb-0"><c:out value="${carrito.precio}"/>€</h5>
-                                                                        </div>
-                                                                        <a href="BorrarProductoCarrito">
+                                                                    <div class="ms-3">
+                                                                        <h5><c:out value="${carrito.nombre_producto}"/></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex flex-row align-items-center">
+                                                                    <div style="width: 50px;">
+                                                                        <h5 class="fw-normal mb-0"><c:out value="${carrito.cantidad}"/></h5>
+                                                                    </div>
+                                                                    <div style="width: 80px;">
+                                                                        <h5 class="mb-0"><c:out value="${carrito.precio}"/>€</h5>
+                                                                    </div>
+                                                                    <form method="post" action="EliminarProductoCarrito">
+                                                                        <input type="hidden" name="id_producto" value="${carrito.id_producto}" />
+                                                                        <button type="submit" class="aMenu btn" style="background: transparent; border: none;">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                                                             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
                                                                             </svg>
-                                                                        </a>
-                                                                    </div>
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <c:set var="precio_total" value="${precio_total + carrito.precio}" />
-                                                    </c:forEach>
-                                                    <c:set var="iva" value="${precio_total * 0.21}" />
-                                                    <c:set var="precio_iva" value="${precio_total + iva}" />
+                                                    </div>
+                                                    <c:set var="precio_total" value="${precio_total + carrito.precio}" />
+                                                </c:forEach>
+                                                <div>
+                                                    <form method="post" action="VaciarCesta">
+                                                        <input type="hidden" name="id_carrito" value="${carrito.id_carrito}"/>
+                                                        <button type="submit" class="w-100 text-center btn btn-danger">Vaciar Cesta</button>
+                                                    </form>
                                                 </div>
+                                                <c:set var="iva" value="${precio_total * 0.21}" />
+                                                <c:set var="precio_iva" value="${precio_total + iva}" />
+                                            </div>
 
-                                                <div class="col-lg-6">
+                                            <div class="col-lg-6">
+                                                <form method="post" action="HacerPedido" style="display: inline-block; float: right;">
                                                     <div class="card bg-dark text-white rounded-3 mb-4">
                                                         <div class="card-body">
                                                             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -271,14 +281,16 @@
                                                             <input type="submit" id="botonValidarPago" class="btn btn-dark btn-block btn-lg" value="PAGAR"/>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <h5>La cesta está vacía.</h5>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
-                                </form>
+                                                </form>
+                                            </div>
+
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h5>La cesta está vacía.</h5>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+
                             </div>
                         </div>  
                     </div>

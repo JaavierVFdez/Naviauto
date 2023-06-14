@@ -39,6 +39,7 @@ public class AddTrabajador extends HttpServlet {
             String dni_nuevo = request.getParameter("dni");
             String telefono_nuevo = request.getParameter("telefono");
             String correo_nuevo = request.getParameter("correo");
+            String password = request.getParameter("password");
             String nombre_nuevo = request.getParameter("nombre");
             String apellido_nuevo = request.getParameter("apellido");
             String tipoUsuario_nuevo = request.getParameter("tipoUsuario");
@@ -57,10 +58,10 @@ public class AddTrabajador extends HttpServlet {
             }
             // Añadimos al usuario si los datos son correctos
             if (datosValidos) {
-                usuarioDao.addEmpleado(dni_nuevo, telefono_nuevo, correo_nuevo, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo);
+                usuarioDao.addEmpleado(dni_nuevo, telefono_nuevo, correo_nuevo, password, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo);
                 response.sendRedirect("AdministrarTrabajadores");
             } else {
-                request.setAttribute("usuario", new Usuario(dni_nuevo, correo_nuevo, "", nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo));
+                request.setAttribute("usuario", new Usuario(dni_nuevo, correo_nuevo, password, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo));
                 request.setAttribute("telefono", telefono_nuevo);
                 request.setAttribute("noeditado", true);
                 request.getRequestDispatcher("gestion/jefe/nuevoEmpleado.jsp").forward(request, response);

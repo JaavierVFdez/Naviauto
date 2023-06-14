@@ -71,7 +71,10 @@
                 <label>Apellido <p id="errorApellido" style="display: inline-block; font-style: italic;"></p>:</label>
                 <input value="${usuario.apellido}" class="form-control mb-1" placeholder="Introduzca el apellido" type="text" name="apellido" id="apellido" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Correo <p id="errorCorreo" style="display: inline-block; ont-style: italic;"></p>:</label>
-                <input value="${usuario.email}" type="text" name="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="0.00" autocomplete="off"/>
+                <input value="${usuario.email}" type="text" name="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Intoruzca el correo" autocomplete="off"/>
+                <label>Contraseña <p id="errorPassword" style="display: inline-block; ont-style: italic;"></p>:</label>
+                <input value="${usuario.password}" type="text" name="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
+                
                 <label>Tipo Usuario :</label>
                 <select id="tipoUsuario" name="tipoUsuario" class="form-control mb-1" style="width: 50%; text-align: center; display: block; margin: 1rem auto;">
                     <option value="jefe" ${usuario.tipoUsuario == 'jefe' ? 'selected' : ''}>Jefe</option>

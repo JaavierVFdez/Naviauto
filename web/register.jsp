@@ -115,7 +115,6 @@
                         <label class="label">Contraseña <p style="display: inline-block" id="errorPassword"></p></label><br/>
                         <input type="password" name="password" id="passwordRegister" placeholder="Introduce tu contraseña" size="65" maxlength="16" minlength="8"/><br/><br/> <br/>
 
-                        <p class="ccenter"><a href="#">¿Has olvidado tu contraseña?</a></p>
                         <p class="ccenter">¿Ya tienes cuenta?, <a href="IniciarSesion">Inicie sesión aquí­</a>.</p>
 
                         <div id="botonRegistrar">

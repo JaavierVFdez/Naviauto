@@ -48,6 +48,7 @@ public class TrabajadorEditado extends HttpServlet {
 
             String telefono_nuevo = request.getParameter("telefono");
             String correo_nuevo = request.getParameter("correo");
+            String password = request.getParameter("password");
             String nombre_nuevo = request.getParameter("nombre");
             String apellido_nuevo = request.getParameter("apellido");
             String tipoUsuario_nuevo = request.getParameter("tipoUsuario");
@@ -77,10 +78,10 @@ public class TrabajadorEditado extends HttpServlet {
             } */
             // Actualizamos si los datos son correctos
             if (datosValidos) {
-                usuarioDao.actualizarEmpleado(dni_actual, telefono_nuevo, correo_nuevo, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo);
+                usuarioDao.actualizarEmpleado(dni_actual, telefono_nuevo, correo_nuevo, password, nombre_nuevo, apellido_nuevo, tipoUsuario_nuevo, direccion_nuevo);
                 response.sendRedirect("AdministrarTrabajadores");
             } else {
-                request.setAttribute("usuario", new Usuario(dni_actual, correo_actual,"", nombre_actual, apellido_actual, tipoUsuario_actual, direccion_actual));
+                request.setAttribute("usuario", new Usuario(dni_actual, correo_actual, password, nombre_actual, apellido_actual, tipoUsuario_actual, direccion_actual));
                 request.setAttribute("telefono", telefono_actual);
                 request.setAttribute("noeditado", true);
                 request.getRequestDispatcher("gestion/jefe/editarTrabajador.jsp").forward(request, response);

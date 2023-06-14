@@ -124,7 +124,6 @@
                     <p style="display: inline-block" id="errorCorreo"></p><br/>
                     <input type="password" name="password" id="passwordLogin" placeholder="Contraseña" size="65" maxlength="20" minlength="8"/><br/>
                     <p style="display: inline-block" id="errorPassword"></p><br/> <br/>
-                    <p><a href="#">¿Has olvidado tu contraseña?</a></p>
                     <p>¿No tienes cuenta?, <a href="NuevaCuenta">registrate aquí</a>.</p>
                     <input type="submit" onclick="validarLogin()" value="Acceder" id="iniciarSesion" class="btn btn-danger"/>
                 </form>

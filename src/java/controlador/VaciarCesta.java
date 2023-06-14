@@ -6,22 +6,21 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.dao.CarritoDAO;
 import modelo.dao.UsuarioDAO;
-import modelo.entidad.Usuario;
 
 /**
  *
  * @author javie
  */
-@WebServlet(name = "AdministrarTrabajadores", urlPatterns = {"/AdministrarTrabajadores"})
-public class AdministrarTrabajadores extends HttpServlet {
+@WebServlet(name = "VaciarCesta", urlPatterns = {"/VaciarCesta"})
+public class VaciarCesta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +35,20 @@ public class AdministrarTrabajadores extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            //Objetos
+            
+            //Objeto
+            CarritoDAO carritoDao = new CarritoDAO();
             UsuarioDAO usuarioDao = new UsuarioDAO();
-            List<Usuario> usuarios = usuarioDao.getUsuarios();
             
-            usuarioDao.cerrarConexion();
-            request.setAttribute("usuarios", usuarios); 
+            //Abrimos la sesion
+            HttpSession sesion = request.getSession();
             
+            //ALmacenamos
+            String correo = (String)sesion.getAttribute("correo");
+            String dni = usuarioDao.obtenerDNI(correo);
             
-            request.getRequestDispatcher("gestion/jefe/administrarTrabajadores.jsp").forward(request, response);
-            return;
-
+            carritoDao.vaciarCesta(dni);
+            response.sendRedirect("Carrito");
         }
     }
 

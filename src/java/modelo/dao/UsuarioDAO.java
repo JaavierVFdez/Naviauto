@@ -207,13 +207,13 @@ public class UsuarioDAO {
     
     
     //Función para añadir un nuevo usuario
-    public boolean addEmpleado(String dni, String telefono, String correo, String nombre, String apellido, String tipoUsuario, String direccion) {
+    public boolean addEmpleado(String dni, String telefono, String correo, String password, String nombre, String apellido, String tipoUsuario, String direccion) {
         boolean usuarioAdded = false;
 
         try {
             //Consulta
             PreparedStatement ps = conexion.prepareStatement("INSERT into Usuarios (dni, telefono, email, password, nombre, apellido, tipoUsuario, direccion)"
-                    + "VALUES('" + dni + "'," + telefono + ",'" + correo + "','Admin12345@','" + nombre + "','" + apellido + "','" + tipoUsuario + "', '"+direccion+"');");
+                    + "VALUES('" + dni + "'," + telefono + ",'" + correo + "','"+password+"','" + nombre + "','" + apellido + "','" + tipoUsuario + "', '"+direccion+"');");
 
             int executeUpdate = ps.executeUpdate();
             usuarioAdded = true;
@@ -248,7 +248,7 @@ public class UsuarioDAO {
 
                 // Añadir el usuario a la lista si cumple con las condiciones
                 if (tipoUsuario.equals("jefe") || tipoUsuario.equals("admin")) {
-                    Usuario usuario = new Usuario(dni, correo, "", nombre, apellido, tipoUsuario, direccion);
+                    Usuario usuario = new Usuario(dni, telefono, correo, "", nombre, apellido, tipoUsuario, direccion);
                     usuarios.add(usuario);
                 }
             }
@@ -329,10 +329,10 @@ public class UsuarioDAO {
     }
     
     //Funcion para actualizar los datos el usuario
-    public void actualizarEmpleado(String dni, String telefono, String correo, String nombre, String apellido, String tipoUsuario, String direccion) {
+    public void actualizarEmpleado(String dni, String telefono, String correo, String password, String nombre, String apellido, String tipoUsuario, String direccion) {
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios set telefono = '" + telefono + "', email = '" + correo + "', nombre = '" + nombre + "', apellido = '" + apellido + "', tipoUsuario = '"+tipoUsuario+"', direccion = '" + direccion + "' where dni = '" + dni + "';");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios set telefono = '" + telefono + "', email = '" + correo + "', password = '"+password+"', nombre = '" + nombre + "', apellido = '" + apellido + "', tipoUsuario = '"+tipoUsuario+"', direccion = '" + direccion + "' where dni = '" + dni + "';");
 
             int executeUpdate = ps.executeUpdate();
 

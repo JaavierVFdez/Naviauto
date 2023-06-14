@@ -49,6 +49,9 @@
                 <input class="form-control mb-1" placeholder="Introduzca el apellido" type="text" name="apellido" id="apellido" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Correo <p id="errorCorreo" style="display: inline-block; ont-style: italic;"></p>:</label>
                 <input type="text" name="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca el correo" autocomplete="off"/>
+                <label>Contraseña <p id="errorPassword" style="display: inline-block; ont-style: italic;"></p>:</label>
+                <input value="${usuario.password}" type="text" name="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
+
                 <label>Tipo Usuario :</label>
                 <select id="tipoUsuario" name="tipoUsuario" class="form-control mb-1" style="width: 50%; text-align: center; display: block; margin: 1rem auto;">
                     <option value="jefe"}>Jefe</option>

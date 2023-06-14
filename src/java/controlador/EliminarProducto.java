@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.CarritoDAO;
+import modelo.dao.DetallePedidoDAO;
 import modelo.dao.ProductoDAO;
 
 /**
@@ -38,6 +40,18 @@ public class EliminarProducto extends HttpServlet {
             int id_producto = Integer.parseInt(request.getParameter("id_producto"));
             
             ProductoDAO productoDao = new ProductoDAO();
+            CarritoDAO carritoDao = new CarritoDAO();
+            DetallePedidoDAO detallePedidoDao = new DetallePedidoDAO();
+            
+            //COmprobamos si el producto esta en el carrito, en caso de ser asi lo eliminamos
+            if(carritoDao.productoExiste(id_producto)) {
+                carritoDao.adminEliminarProductoCarrito(id_producto);
+            }
+            
+            //Comprobamos si el producto esta en detalles pedido
+            if(detallePedidoDao.productoExiste(id_producto)) {
+                detallePedidoDao.adminEliminarProducto(id_producto);
+            }
             
             //Eliminamos el producto
             productoDao.eliminarProducto(id_producto);

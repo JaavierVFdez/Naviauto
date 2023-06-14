@@ -68,7 +68,7 @@
                             <c:forEach items="${usuarios}" var="usuario">
                                 <tr>
                                     <td>${usuario.dni}</td>
-                                    <td>${telefono}</td>
+                                    <td>${usuario.telefono}</td>
                                     <td>${usuario.email}</td>
                                     <td>${usuario.nombre}</td>
                                     <td>${usuario.apellido} </td>
@@ -78,7 +78,7 @@
                                         <!-- Formulario de edición -->
                                         <form method="post" action="EditarTrabajador" class="text-center">
                                             <input type="hidden" name="dni" value="${usuario.dni}"/>
-                                            <input type="hidden" name="telefono" value="${telefono}"/>
+                                            <input type="hidden" name="telefono" value="${usuario.telefono}"/>
                                             <input type="hidden" name="correo" value="${usuario.email}" />
                                             <input type="hidden" name="nombre" value="${usuario.nombre}" />
                                             <input type="hidden" name="apellido" value="${usuario.apellido}" />
@@ -92,7 +92,7 @@
                                         <!-- Formulario de eliminación -->
                                         <form method="post" action="EliminarTrabajador" class="text-center">
                                             <input type="hidden" name="dni" value="${usuario.dni}"/>
-                                            <input type="hidden" name="telefono" value="${telefono}"/>
+                                            <input type="hidden" name="telefono" value="${usuario.telefono}"/>
                                             <input type="hidden" name="correo" value="${usuario.email}" />
                                             <input type="hidden" name="nombre" value="${usuario.nombre}" />
                                             <input type="hidden" name="apellido" value="${usuario.apellido}" />

@@ -166,6 +166,51 @@ public class CarritoDAO {
         }
     }
     
+    //Funcion para comprobar si el producto esta en el carrito
+    public boolean productoExiste(int id_producto) {
+        boolean productoExiste = false;
+
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from Carrito where id_producto = "+id_producto+";");
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                productoExiste = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productoExiste;
+    }
+    
+    //Eliminar producto del carrito para admin
+    public void adminEliminarProductoCarrito(int id_producto) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM Carrito WHERE id_producto = "+id_producto+";");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Funcion para eliminar un producto del carrito
+    public void eliminarProductoCarrito(String dni, int id_producto) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM Carrito WHERE dni = '"+dni+"' and id_producto = "+id_producto+";");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void cerrarConexion() {
         try {
            conexion.close();

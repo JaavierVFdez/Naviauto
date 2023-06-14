@@ -47,6 +47,17 @@ public class Usuario extends Conexion {
         this.direccion = direccion;
     }
 
+    public Usuario(String dni, String telefono, String email, String password, String nombre, String apellido, String tipoUsuario, String direccion) {
+        this.dni = dni;
+        this.telefono = telefono;
+        this.email = email;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.tipoUsuario = tipoUsuario;
+        this.direccion = direccion;
+    }
+
     public Usuario(String dni, String telefono, String email, String nombre, String apellido, String tipoUsuario) {
         this.dni = dni;
         this.telefono = telefono;

@@ -46,7 +46,7 @@ public class DetallePedidoDAO {
     public void addDetallePedido(int id_pedido, int id_producto, int cantidad, float precio) {
         try {
             //Consulta
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO DetallesPedido (id_pedido, id_producto, cantidad, precio) VALUES ("+id_pedido+", "+id_producto+", "+cantidad+", "+precio+");");
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO DetallesPedido (id_pedido, id_producto, cantidad, precio) VALUES (" + id_pedido + ", " + id_producto + ", " + cantidad + ", " + precio + ");");
 
             ps.executeUpdate();
 
@@ -54,43 +54,75 @@ public class DetallePedidoDAO {
             e.printStackTrace();
         }
     }
-    
+
     //Funcion para obtener los detalles del pedido
     public List<DetallePedido> obtenerDetallesPedido(int id_pedido) {
         List<DetallePedido> detallesPedido = new ArrayList();
-        
+
         try {
-            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM detallespedido where id_pedido = "+id_pedido+";");
+            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM detallespedido where id_pedido = " + id_pedido + ";");
             ResultSet resultSet = ps.executeQuery();
-            
+
             int id_detalle = 0;
             int id_producto = 0;
             int cantidad = 0;
             float precio = 0;
-            
+
             while (resultSet.next()) {
 
                 //Almacenamos los datos
-               id_detalle = resultSet.getInt("id_detalle");
-               id_producto = resultSet.getInt("id_producto");
-               cantidad = resultSet.getInt("cantidad");
-               precio = resultSet.getFloat("precio");
-               
-               DetallePedido detallePedido = new DetallePedido(id_detalle, id_pedido, id_producto, cantidad, precio);
-               detallesPedido.add(detallePedido);
+                id_detalle = resultSet.getInt("id_detalle");
+                id_producto = resultSet.getInt("id_producto");
+                cantidad = resultSet.getInt("cantidad");
+                precio = resultSet.getFloat("precio");
+
+                DetallePedido detallePedido = new DetallePedido(id_detalle, id_pedido, id_producto, cantidad, precio);
+                detallesPedido.add(detallePedido);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return detallesPedido;
     }
-    
+
+    //Funcion para comprobar si el producto esta en el carrito
+    public boolean productoExiste(int id_producto) {
+        boolean productoExiste = false;
+
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from detallespedido where id_producto = " + id_producto + ";");
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                productoExiste = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productoExiste;
+    }
+
+    //Eliminar producto del carrito para admin
+    public void adminEliminarProducto(int id_producto) {
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM detallespedido WHERE id_producto = " + id_producto + ";");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void cerrarConexion() {
         try {
-           conexion.close();
-        }catch(SQLException e) {
+            conexion.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
