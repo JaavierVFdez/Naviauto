@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Naviauto - Administrar Soporte</title>
         <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover text-center">
+                    <table id="tabla" class="table table-striped table-hover text-center">
                         <thead>
                             <tr>
                                 <th>NOMBRE</th>
@@ -133,5 +133,14 @@
             </div>        
         </div>
         <!-- Fin contenido principal -->
+        
+        <!-- Import JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+        <script src="resources/js/dataTable.js"/></script>
     </body>
 </html>

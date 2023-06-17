@@ -1514,3 +1514,7 @@ table.table .avatar {
 input[type=text]:focus{
     outline:0;
 }
+
+.dataTables_filter {
+    float: right;
+}

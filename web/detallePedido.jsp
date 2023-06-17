@@ -75,7 +75,7 @@
                 <a href="PaginaInicio?source=quienesSomos" id="a2" style="text-decoration: none;" class="aMenu">Quienes Somos</a>
                 <a href="PaginaInicio?source=servicios" id="a3" style="text-decoration: none;" class="aMenu">Servicios</a>
                 <a href="Productos" id="a3" style="text-decoration: none;" class="aMenu">Productos</a>
-                <a href="contacto.jsp" id="a4" style="text-decoration: none;" class="aMenu">Contacto</a>
+                <a href="Contacto" id="a4" style="text-decoration: none;" class="aMenu">Contacto</a>
             </div>
         </nav>
         <!--Fin menu-->

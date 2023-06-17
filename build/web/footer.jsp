@@ -5,7 +5,7 @@
         <div class="footer-top">
             <div class="row">
                 <div class="col-md-6 col-lg-3 about-footer">
-                    <h3>INFORMACIÓN DE LA EMPRESA</h3>
+                    <h3><strong>INFORMACIÓN DE LA EMPRESA</strong></h3>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i>
                             P.I. Navisur c/Jacinto,5 41907
@@ -16,39 +16,31 @@
                     </ul>
                     <a href="#contactos" class="btn red-btn">Contacto</a>
                 </div>
-                <div id="paginasFooter" class="col-md-6 col-lg-2 page-more-info">
-                    <div class="footer-title">
-                        <h4>PÁGINAS</h4>
-                    </div>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="#contactos">Contacto</a></li>
-                    </ul>
-                </div>
 
                 <div class="col-md-6 col-lg-3 page-more-info">
                     <div class="footer-title">
-                        <h4>REDES SOCIALES</h4>
+                        <h4><strong>REDES SOCIALES</strong></h4>
                     </div>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Instagram </a></li>
+                        <li><a class="aService" style="color:white;" href="https://facebook.com">Facebook</a><br/>
+                        <a class="aService" href="https://twitter.com">Twitter</a><br/>
+                        <a class="aService" href="https://instagram.com">Instagram </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-lg-3 open-hours">
                     <div class="footer-title">
-                        <h4>HORARIO INVIERNO</h4>
+                        <h4><strong>HORARIO INVIERNO</strong></h4>
                     </div>
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td><i class="far fa-clock"></i>Lunes-Jueves</td>
-                                <td>8:30-14:00 / 16:00-18:00</td>
+                                <td style="color: white;"><i class="far fa-clock"></i>Lunes-Jueves</td>
+                                <td style="color: white;">8:30-14:00 / 16:00-18:00</td>
                             </tr>
                             <tr>
-                                <td><i class="far fa-clock"></i>Viernes</td>
-                                <td>8:30-14:00</td>
+                                <td style="color: white;"><i class="far fa-clock"></i>Viernes</td>
+                                <td style="color: white;">8:30-14:00</td>
                             </tr>
                         </tbody>
                     </table>
@@ -56,17 +48,17 @@
                 </div>
                 <div class="col-md-6 col-lg-3 open-hours">
                     <div class="footer-title">
-                        <h4>HORARIO VERANO</h4>
+                        <h4><strong>HORARIO VERANO</strong></h4>
                     </div>
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td><i class="far fa-clock"></i>Lunes-Viernes</td>
-                                <td>8:30-15:00</td>
+                                <td style="color:white;"><i class="far fa-clock"></i>Lunes-Viernes</td>
+                                <td style="color: white;">8:30-15:00</td>
                             </tr>
                             <tr>
-                                <td><i class="far fa-clock"></i>Viernes</td>
-                                <td>8:30-14:00</td>
+                                <td style="color: white;"><i class="far fa-clock"></i>Viernes</td>
+                                <td style="color: white;">8:30-14:00</td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,13 +70,13 @@
         <div class="footer-bottom">
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="" class="politicas">Polí­ticas de privacidad</a>
+                    <a class="aService">Polí­ticas de privacidad</a>
                 </div>
                 <div class="col-sm-2">
                     <p></p>
                 </div>
                 <div class="col-sm-6">
-                    <p class="terminos" style="color: white;">Términos legales</p>
+                    <p class="terminos" style="color: white;"><a class="aService">Términos legales</a></p>
                 </div>
             </div>
         </div>

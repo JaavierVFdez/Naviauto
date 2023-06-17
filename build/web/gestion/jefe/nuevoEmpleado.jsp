@@ -40,17 +40,17 @@
             <h4 class="mb-5" style="padding-top: 0.8em;"><strong>Nuevo Trabajador</strong></h4>
             <form method="post" action="AddTrabajador" class="text-center">
                 <label>DNI <p id="errorDNI" style="display: inline-block; font-style: italic;"></p>:</label>
-                <input class="form-control mb-1" placeholder="Introduzca el dni" type="text" name="dni" id="dni" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
+                <input class="form-control mb-1" placeholder="Introduzca el dni" type="text" name="dni" id="dni" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" maxlength="9" minlength="9"/><br/><br/>
                 <label>Teléfono <p id="errorTelefono" style="display: inline-block; font-style: italic;"></p>:</label>
-                <input class="form-control mb-1" placeholder="Introduzca el telefono" type="text" name="telefono" id="telefono" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
+                <input class="form-control mb-1" placeholder="Introduzca el telefono" type="text" name="telefono" id="telefono" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" maxlength="9"/><br/><br/>
                 <label>Nombre <p id="errorNombre" style="display: inline-block; font-style: italic;"></p>:</label>
                 <input class="form-control mb-1" placeholder="Introduzca el nombre" type="text" name="nombre" id="nombre" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Apellido <p id="errorApellido" style="display: inline-block; font-style: italic;"></p>:</label>
                 <input class="form-control mb-1" placeholder="Introduzca el apellido" type="text" name="apellido" id="apellido" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Correo <p id="errorCorreo" style="display: inline-block; ont-style: italic;"></p>:</label>
-                <input type="text" name="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca el correo" autocomplete="off"/>
+                <input type="text" name="correo" id="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca el correo" autocomplete="off"/>
                 <label>Contraseña <p id="errorPassword" style="display: inline-block; ont-style: italic;"></p>:</label>
-                <input value="${usuario.password}" type="text" name="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
+                <input value="${usuario.password}" type="password" name="password" id="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
 
                 <label>Tipo Usuario :</label>
                 <select id="tipoUsuario" name="tipoUsuario" class="form-control mb-1" style="width: 50%; text-align: center; display: block; margin: 1rem auto;">
@@ -60,7 +60,7 @@
                 <label>Direccion :</label>
                 <textarea autocomplete="off" class="form-control mb-1" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" autocomplete="off" name="direccion" id="direccion" placeholder="Dirección (opcional)" max="256"></textarea><br/><br/>
 
-                <input type="submit" class="btn btn-danger mb-4" onclick="validarNuevoUsuario()" name="nuevoUsuario" value="Añadir Trabajador" id="nuevoUsuario" />
+                <input type="submit" class="btn btn-danger mb-4" onclick="validarEditarTrabajador()" name="nuevoUsuario" value="Añadir Trabajador" id="nuevoUsuario" />
             </form>
         </div>
         <!-- Fin contenido principal -->

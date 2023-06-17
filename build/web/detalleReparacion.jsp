@@ -74,7 +74,7 @@
                 <a href="PaginaInicio?source=quienesSomos" id="a2" style="text-decoration: none;" class="aMenu">Quienes Somos</a>
                 <a href="PaginaInicio?source=servicios" id="a3" style="text-decoration: none;" class="aMenu">Servicios</a>
                 <a href="Productos" id="a3" style="text-decoration: none;" class="aMenu">Productos</a>
-                <a href="contacto.jsp" id="a4" style="text-decoration: none;" class="aMenu">Contacto</a>
+                <a href="Contacto" id="a4" style="text-decoration: none;" class="aMenu">Contacto</a>
             </div>
         </nav>
         <!--Fin menu-->
@@ -144,6 +144,30 @@
 
                         </tbody>
                     </table>
+                    <br/><br/>
+                    <c:if test = "${not empty piezas}">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2><b>Piezas de la reparación</b></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover text-center">
+                            <tr class="text-center">
+                                <th class="text-center">NOMBRE</th>
+                                <th class="text-center">FABRICANTE</th>
+                                <th class="text-center">PRECIO</th>
+                            </tr>
+                            <c:forEach var="pieza" items="${piezas}" varStatus="loop">
+                                <tr class="text-center">
+                                    <td><h5>${pieza.nombre}</h5></td>
+                                    <td><h5>${pieza.fabricante}</h5></td>
+                                    <td><h5 class="fw-normal mb-0">${pieza.precio} €</h5></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:if>
                 </div>
             </div>        
         </div>

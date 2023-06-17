@@ -90,6 +90,7 @@ public class AddVehiculo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            request.setCharacterEncoding("UTF-8");
             processRequest(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(AddVehiculo.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,6 +109,7 @@ public class AddVehiculo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            request.setCharacterEncoding("UTF-8");
             processRequest(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(AddVehiculo.class.getName()).log(Level.SEVERE, null, ex);

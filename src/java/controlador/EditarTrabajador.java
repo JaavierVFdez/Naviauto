@@ -40,13 +40,14 @@ public class EditarTrabajador extends HttpServlet {
             //Almacenamos
             String dni = request.getParameter("dni");
             String correo = request.getParameter("correo");
+            String password = usuarioDao.obtenerPass(correo);
             String telefono = usuarioDao.obtenerTLF(correo);
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
-            String direccion = request.getParameter("direccion");
+            String direccion = usuarioDao.obtenerDireccion(correo);
             String tipoUsuario = request.getParameter("tipoUsuario");
 
-            Usuario usuario = new Usuario(dni, correo, "", nombre, apellido, tipoUsuario, direccion);
+            Usuario usuario = new Usuario(dni, correo, password, nombre, apellido, tipoUsuario, direccion);
             request.setAttribute("usuario", usuario);
             request.setAttribute("telefono", telefono);
             

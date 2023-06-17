@@ -13,6 +13,8 @@ function validarEditarTrabajador() {
     document.getElementById("nuevoUsuario").addEventListener('click', validarTelefono, false);
     document.getElementById("nuevoUsuario").addEventListener('click', validarNombre, false);
     document.getElementById("nuevoUsuario").addEventListener('click', validarApellido, false);
+    document.getElementById("nuevoUsuario").addEventListener('click', validarPassword, false);
+    
 }
 
 function validarNombre(e) {
@@ -110,8 +112,8 @@ function validarDNI(e) {
 
 function validarCorreo(e) {
     var pEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-    var email = document.getElementById('email').value;
-    var campo = document.getElementById('email');
+    var email = document.getElementById('correo').value;
+    var campo = document.getElementById('correo');
 
     var errorCorreo = document.getElementById('errorCorreo');
 
@@ -128,6 +130,29 @@ function validarCorreo(e) {
     } else {
         campo.style.border = "3px solid red";
         errorCorreo.innerHTML = "  'El campo 'Email' no puede estar vacío.'";
+    }
+}
+
+function validarPassword(e) {
+    var pPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,16}/;
+    var password = document.getElementById('password').value;
+    var campo = document.getElementById('password');
+    
+    var errorPasswprd = document.getElementById('errorPassword');
+
+    if (!password != null || password.trim() != "") {
+        if (!pPassword.test(password)) {
+            campo.style.border = "3px solid red";
+            errorPasswprd.innerHTML = "  'Contraseña inválida (1 mayús. 1 número y 1 carácter especial).'";
+            e.preventDefault();
+            return false;
+        } else {
+            campo.style.border = 'none';
+            errorPasswprd.innerHTML = "";
+        }
+    } else {
+        campo.style.border = "3px solid red";
+        errorPasswprd.innerHTML = "  'El campo 'Contraseña' no puede estar vacía.'";
     }
 }
 

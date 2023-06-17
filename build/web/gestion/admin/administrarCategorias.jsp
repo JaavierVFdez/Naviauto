@@ -6,9 +6,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Naviauto - Administrar Categorias</title>
         <!--Bootstrap-->
         <link rel="stylesheet" href="resources/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+
 
         <!-- Añadimos el head -->
         <jsp:include page="../../head.jsp" />
@@ -16,6 +20,7 @@
     <body>
         <!--Javascript-->
         <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+
 
         <c:choose>
             <c:when test = "${categoriaExiste}">
@@ -72,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table id="tabla" class="table table-striped table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>NOMBRE CATEGORÍA</th>
@@ -80,20 +85,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             <c:forEach items="${categorias}" var="categoria">
                                 <tr class="text-center">
                                     <td>${categoria.nombre_categoria}</td>
                                     <td>
-                                        <!-- Formulario de edición -->
-                                        <form method="post" action="EditarCategoria" class="text-center">
-                                            <input type="hidden" name="nombre_categoria" value="${categoria.nombre_categoria}"/>
-                                            <button class="button" type="submit" style="background-color: transparent; border:  0px solid black;"><svg style="color: black;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                                </svg>
-                                            </button>
-                                        </form>
-
                                         <!-- Formulario de eliminación -->
                                         <form method="post" action="EliminarCategoria" class="text-center">
                                             <input type="hidden" name="nombre_categoria" value="${categoria.nombre_categoria}"/>
@@ -112,5 +108,15 @@
             </div>        
         </div>
         <!-- Fin contenido principal -->
-    </body>
+
+        <!-- Import JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+        <script src="resources/js/dataTable.js"/></script>
+
+</body>
 </html>

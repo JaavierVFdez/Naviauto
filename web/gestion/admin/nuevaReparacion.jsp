@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP Page</title>
+        <title>Naviauto - Administrar Reparacion</title>
         <!-- Añadimos el head -->
         <jsp:include page="../../head.jsp" />
     </head>

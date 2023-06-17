@@ -6,11 +6,14 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.dao.PiezaDAO;
+import modelo.entidad.Pieza;
 import modelo.entidad.Reparacion;
 
 /**
@@ -33,6 +36,9 @@ public class DetalleReparacion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            //Objeto
+            PiezaDAO piezaDao = new PiezaDAO();
                         
             //Almacenamos los datos
             int codigo_reparacion = Integer.parseInt(request.getParameter("codigo_reparacion"));
@@ -61,8 +67,11 @@ public class DetalleReparacion extends HttpServlet {
                 colorEstado = "lightgreen";
             }
             
+            List<Pieza> piezas = piezaDao.obtenerPiezasReparacion(codigo_reparacion);
+            
             Reparacion reparacion = new Reparacion(codigo_reparacion, matricula, descripcion, fechaEntrada, fechaFinalizacion, estado, precio);
             
+            request.setAttribute("piezas", piezas);
             request.setAttribute("colorEstado", colorEstado);
             request.setAttribute("reparacion", reparacion);
             

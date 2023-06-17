@@ -65,15 +65,15 @@
             <h4 class="mb-5" style="padding-top: 0.8em;"><strong>Editar Trabajador</strong></h4>
             <form method="post" action="TrabajadorEditado" class="text-center">
                 <label>Teléfono <p id="errorTelefono" style="display: inline-block; font-style: italic;"></p>:</label>
-                <input value="${telefono}" class="form-control mb-1" placeholder="Introduzca el telefono" type="text" name="telefono" id="telefono" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
+                <input value="${telefono}" class="form-control mb-1" placeholder="Introduzca el telefono" type="text" name="telefono" id="telefono" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" maxlength="9"/><br/><br/>
                 <label>Nombre <p id="errorNombre" style="display: inline-block; font-style: italic;"></p>:</label>
                 <input value="${usuario.nombre}" class="form-control mb-1" placeholder="Introduzca el nombre" type="text" name="nombre" id="nombre" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Apellido <p id="errorApellido" style="display: inline-block; font-style: italic;"></p>:</label>
                 <input value="${usuario.apellido}" class="form-control mb-1" placeholder="Introduzca el apellido" type="text" name="apellido" id="apellido" autocomplete="off" style="width: 50%; text-align: center; display: block; margin: 1rem auto;"/><br/><br/>
                 <label>Correo <p id="errorCorreo" style="display: inline-block; ont-style: italic;"></p>:</label>
-                <input value="${usuario.email}" type="text" name="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Intoruzca el correo" autocomplete="off"/>
+                <input value="${usuario.email}" type="text" name="correo" id="correo" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Intoruzca el correo" autocomplete="off"/>
                 <label>Contraseña <p id="errorPassword" style="display: inline-block; ont-style: italic;"></p>:</label>
-                <input value="${usuario.password}" type="text" name="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
+                <input value="${usuario.password}" type="password" name="password" id="password" class="form-control" style="width: 50%; text-align: center; display: block; margin: 1rem auto;" placeholder="Introduzca la contraseña" autocomplete="off"/>
                 
                 <label>Tipo Usuario :</label>
                 <select id="tipoUsuario" name="tipoUsuario" class="form-control mb-1" style="width: 50%; text-align: center; display: block; margin: 1rem auto;">
@@ -86,6 +86,7 @@
                 <input type="hidden" name="dni_actual" value="${usuario.dni}"/>
                 <input type="hidden" name="telefono_actual" value="${telefono}"/>
                 <input type="hidden" name="correo_actual" value="${usuario.email}"/>
+                <input type="hidden" name="password_actual" value="${usuario.password}"/>
                 <input type="hidden" name="nombre_actual" value="${usuario.nombre}"/>
                 <input type="hidden" name="apellido_actual" value="${usuario.apellido}"/>
                 <input type="hidden" name="tipoUsuario_actual" value="${usuario.tipoUsuario}"/>

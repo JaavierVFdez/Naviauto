@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Naviauto - Administrar Vehiculo</title>
         <!-- Añadimos el head -->
         <jsp:include page="../../head.jsp" />
     </head>
@@ -17,27 +17,7 @@
         <!--Javascript-->
         <script src="resources/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
 
-    <c:choose>
-        <c:when test = "${cocheNoAdded}">
-            <script>
-                toastr["error"]("El DNI introcido no está en nuestro sistema.", {"closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-left",
-                    "preventDuplicates": true,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"})
-            </script>
-        </c:when>
-    </c:choose>
+    
 
 
      <!-- Menú -->

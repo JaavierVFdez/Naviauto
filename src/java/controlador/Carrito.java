@@ -51,18 +51,13 @@ public class Carrito extends HttpServlet {
             String apellido = usuarioDao.obtenerApellido(correo);
             String dni = usuarioDao.obtenerDNI(correo);
             String telefono = usuarioDao.obtenerTLF(correo);
-            String direccion = "";
             
-            if(usuarioDao.direccionExiste(correo)) {
-                direccion = usuarioDao.obtenerDireccion(correo);
-            }
             
             request.setAttribute("nombre_usuario", nombre);
             request.setAttribute("apellido_usuario", apellido);
             request.setAttribute("dni_usuario", dni);
             request.setAttribute("telefono_usuario", telefono);
             request.setAttribute("correo_usuario", correo);
-            request.setAttribute("direccion_usuario", direccion);
             
             
             //Almacenamos el carrito del usuario
@@ -108,6 +103,7 @@ public class Carrito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**

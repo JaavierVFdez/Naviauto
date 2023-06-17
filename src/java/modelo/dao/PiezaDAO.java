@@ -105,6 +105,38 @@ public class PiezaDAO {
         }
     }
 
+    //Funcion para obtener las piezas de la reparacion del cliente
+    public List<Pieza> obtenerPiezasReparacion(int codigo_reparacion) {
+        List<Pieza> piezas = new ArrayList();
+
+        try {
+            PreparedStatement ps = conexion.prepareStatement("SELECT * FROM piezas where codigo_reparacion = "+codigo_reparacion+";");
+            ResultSet resultSet = ps.executeQuery();
+            int codigo_pieza = 0;
+            String nombre = "";
+            String fabricante = "";
+            float precio = 0;
+
+            while (resultSet.next()) {
+
+                //Almacenamos los datos
+                codigo_pieza = resultSet.getInt("codigo_pieza");
+                codigo_reparacion = resultSet.getInt("codigo_reparacion");
+                nombre = resultSet.getString("nombre");
+                fabricante = resultSet.getString("fabricante");
+                precio = resultSet.getFloat("precio");
+
+                Pieza pieza = new Pieza(codigo_pieza, codigo_reparacion, nombre, fabricante, precio);
+                piezas.add(pieza);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return piezas;
+    }
+
     public void cerrarConexion() {
         try {
             conexion.close();

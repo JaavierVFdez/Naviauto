@@ -284,7 +284,7 @@ public class UsuarioDAO {
                 direccion = rs.getString("direccion");
 
                 // Si la direccion no es null y no está vacía, entonces existe
-                if (direccion != null && !direccion.equals("")) {
+                if (direccion != null || !direccion.equals("")) {
                     direccionExiste = true;
                 }
             }
@@ -313,6 +313,26 @@ public class UsuarioDAO {
         }
 
         return dni;
+    }
+    
+    //Funcion para obtener los datos del usuario logado
+    public String obtenerPass(String correo) {
+
+        String password = "";
+
+        try {
+            //Consulta
+            PreparedStatement ps = conexion.prepareStatement("SELECT * from usuarios where email like '" + correo + "';");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                password = rs.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return password;
     }
 
     //Funcion para actualizar los datos el usuario
